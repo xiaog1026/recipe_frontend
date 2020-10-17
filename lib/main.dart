@@ -75,8 +75,8 @@ class MyStackPageState extends State<MyStackPage> {
           Home(),
           Category(),
           Add(),
-          Profile(),
-          Shopping()
+          Shopping(),
+          Profile()
         ],
       ),
     );

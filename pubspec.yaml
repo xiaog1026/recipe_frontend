@@ -29,7 +29,25 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
 
+  # 视频播放器控件
+  video_player: ^0.11.1
+  # 一个简单易用的而且可高度自定义的播放器
+  #awsome_video_player: ^1.0.8+1
+
+  # 控制横竖屏控件
+  auto_orientation: ^1.0.6
+
+  # 控制屏幕亮度以及屏幕常亮组件
+  screen: ^0.0.5
+
+  # 格式化时间日期组件
+  common_utils: ^1.2.1
+
+  # 网络请求控件
   dio: ^3.0.10
+
+  # 缓存图片控件
+  cached_network_image: ^2.3.2
 
 dev_dependencies:
   flutter_test:

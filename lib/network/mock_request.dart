@@ -21,7 +21,7 @@ class MockRequest {
   }
 
   static Future<dynamic> mockTop250() async {
-    var responseStr = await rootBundle.loadString('mock/top250.json');
+    var responseStr = await rootBundle.loadString('mock/home.json');
     var responseJson = json.decode(responseStr);
     return responseJson;
   }

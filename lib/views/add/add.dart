@@ -5,10 +5,10 @@ class Add extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("上传1"),
+        title: Text("上传"),
       ),
       body: Center(
-        child: Text("上传1",style: TextStyle(fontSize: 50)),
+        child: Text("上传",style: TextStyle(fontSize: 50)),
       ),
     );
   }

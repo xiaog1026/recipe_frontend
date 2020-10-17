@@ -32,7 +32,7 @@ class ItemCountTitle extends StatelessWidget {
           Text(
             '全部 ${count == null ? 0 : count} > ',
             style: TextStyle(
-                fontSize: 12, color: Colors.grey, ),
+                fontSize: 18, color: Colors.grey, ),
           )
         ],
       ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 ///
-class TopItemWidget extends StatelessWidget {
+class VideoItemWidget extends StatelessWidget {
 //  _TopItemWidgetState state;
   final String title;
   final String url;
@@ -11,7 +11,7 @@ class TopItemWidget extends StatelessWidget {
 
 //  var _imgSize;
 
-  TopItemWidget({
+  VideoItemWidget({
     Key key,
     @required this.title,
     @required this.url,
@@ -32,14 +32,7 @@ class TopItemWidget extends StatelessWidget {
     var _imgSize = MediaQuery.of(context).size.width / 5 * 3;
 //    }
     var fontColor = Colors.white;
-    if ("type1" == type){
-      _imgSize = _imgSize + 100;
-      fontColor = Colors.red;
-    } else if ("type2" == type){
-      _imgSize = _imgSize/2;
-    } else {
-      _imgSize = _imgSize/3;
-    }
+    _imgSize = _imgSize + 200;
 
     return Container(
       width: _imgSize,
@@ -55,24 +48,12 @@ class TopItemWidget extends StatelessWidget {
               fit: BoxFit.cover,
               imageUrl: url,
             ),
-            Positioned(
-              top: _imgSize / 2 + 40.0,
-              left: 1.0,
-              child: Text(
-                title,
-                style: TextStyle(
-                  fontSize: 15.0,
-                  color: fontColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
             // Positioned(
-            //   top: _imgSize / 2,
-            //   child: Container(
-            //     height: _imgSize / 2,
-            //     width: _imgSize,
-            //     color: Colors.brown,
+            //   left: _imgSize / 2,
+            //   child: Image.asset(
+            //     'assets/images/home/video_icon.png',
+            //     width: 30.0,
+            //     height: 30.0,
             //   ),
             // )
           ],

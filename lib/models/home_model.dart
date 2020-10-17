@@ -24,6 +24,12 @@ class Item {
   String playDate;
   double rating;
   List<String> genres;
+  List<String> scrollName;
+  List<String> scrollImageURL;
+  List<String> foodNameType3;
+  List<String> foodImagesType3 ;
+
+
   List<Actor> casts;
   Director director;
   String originalTitle;
@@ -35,6 +41,12 @@ class Item {
     this.playDate = json["year"];
     this.rating = json["rating"]["average"];
     this.genres = json["genres"].cast<String>();
+    this.scrollImageURL = json["scroll_images"].cast<String>();
+    this.scrollName = json["scroll_name"].cast<String>();
+
+    this.foodNameType3 = json["food_name_type3"].cast<String>();
+    this.foodImagesType3 = json["food_images_type3"].cast<String>();
+
     this.casts = (json["casts"] as List<dynamic>).map((item) {
       return Actor.fromMap(item);
     }).toList();
