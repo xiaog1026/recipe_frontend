@@ -8,6 +8,7 @@ import 'package:lovekitchen/router.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 
+/// 首页菜谱一栏
 class ListItem extends StatelessWidget {
   // 首页组件变量
   final Item item;
@@ -154,14 +155,9 @@ class ListItem extends StatelessWidget {
             type: "type1"
         ),
       onTap: () {
-        Router.push(context, Router.videoPage, "1");
+        Router.push(context, Router.detailItemPage, "1");
       },
         );
-    return TopItemWidget(
-        title: item.scrollName[index],
-        url: item.scrollImageURL[index],
-        type: "type1"
-    );
   }
   // 模块2获取显示的图片组件
   Widget getImageByType2(int index) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:lovekitchen/views/home/detail_item_page.dart';
 import 'package:lovekitchen/views/home/videoPlayer/video_player.dart';
+import 'package:lovekitchen/views/home/ viewImg/view_img.dart';
 
 ///https://www.jianshu.com/p/b9d6ec92926f
 
@@ -10,6 +11,7 @@ class Router {
   static const detailPage = 'app://DetailPage';
   static const detailItemPage = 'app://DetailItemPage';
   static const videoPage = 'app://VideoPage';
+  static const viewImg = 'app://ViewImg';
 
 
   static const playListPage = 'app://VideosPlayPage';
@@ -33,6 +35,9 @@ class Router {
           return DetailItemPage(params);
         case videoPage:
           return VideoPage(params);
+        case viewImg:
+          //return ViewImg(pimg:params['img'],pimgs:params['imgs'],pwidth:params['width']);
+          return ViewImg();
       }
     // if (url.startsWith('https://') || url.startsWith('http://')) {
     //   return WebViewPage(url, params: params);

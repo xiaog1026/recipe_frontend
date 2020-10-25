@@ -2,7 +2,7 @@ import 'http_config.dart';
 import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
-
+import 'package:lovekitchen/models/home_detail_item_model.dart';
 ///模拟数据
 class MockRequest {
 
@@ -20,8 +20,14 @@ class MockRequest {
     return responseJson;
   }
 
-  static Future<dynamic> mockTop250() async {
+  static Future<dynamic> mockHome() async {
     var responseStr = await rootBundle.loadString('mock/home.json');
+    var responseJson = json.decode(responseStr);
+    return responseJson;
+  }
+
+  static Future<dynamic> mockHomeDetailItem() async {
+    var responseStr = await rootBundle.loadString('mock/home_detail_item.json');
     var responseJson = json.decode(responseStr);
     return responseJson;
   }

@@ -49,6 +49,12 @@ dependencies:
   # 缓存图片控件
   cached_network_image: ^2.3.2
 
+  # 拍照组件
+  image_picker: ^0.6.7+12
+
+  # GBK 编解码器，支持 File 和 HttpClient 的 Stream interface。用法和 utf8 codec完全一致。
+  fast_gbk: ^0.1.2+1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -76,6 +82,7 @@ flutter:
     - assets/images/tabbar/profile.png
     - assets/images/tabbar/profile_active.png
 
+    - assets/images/home/video_icon.png
     - assets/images/home/wish.png
     - mock/
 

@@ -29,15 +29,16 @@ class VideoItemWidget extends StatelessWidget {
       return Container();
     }
 //    if (_imgSize == null) {
-    var _imgSize = MediaQuery.of(context).size.width / 5 * 3;
+    //var _imgSize = MediaQuery.of(context).size.width / 5 * 3;
+    var _imgSize = MediaQuery.of(context).size.width;
 //    }
     var fontColor = Colors.white;
-    _imgSize = _imgSize + 200;
+    //_imgSize = _imgSize + 100;
 
     return Container(
       width: _imgSize,
       height: _imgSize,
-      padding: EdgeInsets.only(top: 5.0, right: 10.0, bottom: 5.0),
+      //padding: EdgeInsets.only(top: 5.0, right: 10.0, bottom: 5.0),
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(5.0)),
         child: Stack(
@@ -48,14 +49,27 @@ class VideoItemWidget extends StatelessWidget {
               fit: BoxFit.cover,
               imageUrl: url,
             ),
-            // Positioned(
-            //   left: _imgSize / 2,
-            //   child: Image.asset(
-            //     'assets/images/home/video_icon.png',
-            //     width: 30.0,
-            //     height: 30.0,
-            //   ),
-            // )
+            Positioned(
+              top: _imgSize / 2 + 40.0,
+              left: _imgSize / 2 - 40,
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: fontColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Positioned(
+              left:  _imgSize / 2 - 40,
+              top:  _imgSize / 2  - 90,
+              child: Image.asset(
+                'assets/images/home/video_icon.png',
+                width: 60.0,
+                height: 60.0,
+              ),
+            )
           ],
         ),
       ),
