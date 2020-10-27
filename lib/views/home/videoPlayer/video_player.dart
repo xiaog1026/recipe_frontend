@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lovekitchen/views/home/videoPlayer/video_player_UI.dart';
+import 'package:lovekitchen/models/home_detail_item_model.dart';
 
 class VideoPage extends StatelessWidget {
   static final String routerName = '/VideoPage';
-  final subjectId;
+  final HomeDetailItem homeDetailItem;
   BuildContext context;
-  VideoPage(this.subjectId, {Key key}) : super(key: key);
+  VideoPage(this.homeDetailItem, {Key key}) : super(key: key);
 
 //  Size get _window => MediaQueryData.fromWindow(window).size;
 
@@ -16,9 +17,8 @@ class VideoPage extends StatelessWidget {
       body: Center(
         // 该组件宽高默认填充父控件，你也可以自己设置宽高
         child: VideoPlayerUI.network(
-          url:
-          'https://vplay.douguo.com/XMzY0NDQ3ODY0NA==_DouG__640x356.mp4',
-          title: '麻辣小龙虾',
+          url:homeDetailItem.dishVedioLink,
+          title: homeDetailItem.dishName,
         ),
       ),
     );

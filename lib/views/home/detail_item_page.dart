@@ -40,6 +40,8 @@ class DetailItemHomePage extends StatefulWidget {
 
 class _DetailItemHomePage extends State<DetailItemHomePage> {
 
+  int _counter = 1;
+
   // 首页详细信息
   HomeDetailItem homeDetailItem = new HomeDetailItem();
   @override
@@ -105,7 +107,7 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
                 //标题显示评价
                 getItemCountTitleWidget("评价"),
                 SizedBox(height:5),
-                getScrollWidgetType2(),
+                getReviewImages(),
                 Divider(height:10.0,indent:0.0,color:Colors.grey,),
                 //标题显示难易度
                 getItemCountTitleWidget("难易度："+this.homeDetailItem.level),
@@ -160,7 +162,7 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
       ),
     );
   }
-// 模块1获取显示的图片组件
+// 显示的菜谱主图片组件
   Widget getImageByVideo() {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5.0),
@@ -172,7 +174,7 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
             type: "type1"
         ),
         onTap: () {
-          Router.push(context, Router.videoPage, "1");
+          Router.push(context, Router.videoPage, this.homeDetailItem);
         },
       ),
     );
@@ -192,19 +194,46 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
 
   //食材列表
   Widget getIngredents() {
+
     return Column(
       children: <Widget>[
-        Text(
-            '1人数',
-            textAlign : TextAlign.start
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(width: 5),
+            Text(
+              _counter.toString() +'人数',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.black,
+              ),
+            ),
+            IconButton(
+              icon: Icon(Icons.remove),
+              onPressed: () {
+                setState(() {
+                  _counter--;
+                });
+                },
+            ),
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () {
+                setState(() {
+                _counter++;
+              });
+                },
+            )
+          ],
         ),
+        SizedBox(width: 5),
         //for (var item in this.homeDetailItem.ingredents) Text(item.ingredentName + "  " + item.ingredentWeight),
         for (var item in this.homeDetailItem.ingredents)
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             SizedBox(width: 5),
-            Text(item.ingredentName + "  " + item.ingredentWeight)
+            Text(item.ingredentName + "  " + (item.ingredentWeight*_counter).toString() + item.ingredentUnit)
           ],
         )
       ],
@@ -223,44 +252,35 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
   }
 
 
-  // 横向滚动小图  模块2组件
-  Widget getScrollWidgetType2() {
+  // 横向滚动评价小图组件
+  Widget getReviewImages() {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5.0),
       height: 150.0,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
-          getImageByType2(0),
-          getImageByType2(1),
-          getImageByType2(2),
-          getImageByType2(3),
-          getImageByType2(4)
+          for(Comments comment in this.homeDetailItem.comments)
+            if (comment.image != "")
+              getReviewImage(comment)
+
         ],
       ),
     );
   }
 
-  // 模块1获取显示的图片组件
-  Widget getImageByType2(int index) {
-    // List<String> _foodReviewImages=[
-    //   "https://res1.hoto.cn/595b6009d637550fb408d4a0.jpg!w580",
-    //   "https://res1.hoto.cn/0304f57559633f0df444eb88.jpg!default",
-    //   "https://res1.hoto.cn/030efca659633f0df444eb88.jpg!default",
-    //   "https://res1.hoto.cn/030e1e5759633f0df444eb88.jpg!default",
-    //   "https://res1.hoto.cn/02fbc05259633f0df444eb88.jpg!default",
-    //   "https://i3.meishichina.com/attachment/recipe/2020/10/08/2020100816021565823108197577.jpg?x-oss-process=style/c320",
-    //   "https://i3.meishichina.com/attachment/recipe/2020/10/05/2020100516018763727048197577.jpg?x-oss-process=style/c320",
-    //   "https://i3.meishichina.com/attachment/recipe/2020/10/06/2020100616019692622831958079.jpg?x-oss-process=style/c320",
-    //   "https://i3.meishichina.com/attachment/recipe/2020/10/06/2020100616019715788221958079.jpg?x-oss-process=style/c320"];
+  // 显示的评价的小图片组件
+  Widget getReviewImage(Comments comment) {
     return GestureDetector(
       child: TopItemWidget(
           title: "",
-          url: this.homeDetailItem.foodReviewImages[index],
+          url: comment.image,
           type: "type2"
       ),
       onTap: () {
-        Router.push(context, Router.viewImg,  this.homeDetailItem.foodReviewImages[index]);
+        var paramMap = new Map();
+        //paramMap.addAll("",)
+        Router.push(context, Router.viewImg,  comment.image);
       },
     );
   }
@@ -273,24 +293,22 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
-          getNutrition(100,"卡路里","1354"),
-          getNutrition(200,"蛋白质","56克"),
-          getNutrition(300,"脂肪","73克"),
-          getNutrition(500,"碳水化物","118克"),
-          getNutrition(400,"水","288克")
+          //for (int i = 0 ; i < this.homeDetailItem.nutritions.length ; i++)
+          for(Nutritions nutrition in this.homeDetailItem.nutritions)
+          getNutrition(nutrition.nutritionRate,nutrition.nutritionName,nutrition.nutritionWeight)
         ],
       ),
     );
   }
 
   // 营养图片子组件
-  Widget getNutrition(int index, var name,var value) {
+  Widget getNutrition(int rate, var name,var value) {
     return Stack(
       children: <Widget>[
         DecoratedBox(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors:[Colors.white,Colors.blue[index]]
+                colors:[Colors.white,Colors.blue[rate]]
             ), //背景渐变
             boxShadow: [ //阴影
               BoxShadow(

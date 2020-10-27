@@ -72,4 +72,5 @@ class Router {
       return _getPage(url, params);
     }));
   }
+
 }

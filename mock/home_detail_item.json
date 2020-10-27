@@ -6,74 +6,118 @@
   "author": "小白便当",
   "level": "中",
   "tool": "炒锅，大勺等",
+  "nutritions": [
+    {
+      "nutrition_rate": 100,
+      "nutrition_name": "卡路里",
+      "nutrition_weight": "1354"
+    },
+    {
+      "nutrition_rate": 200,
+      "nutrition_name": "蛋白质",
+      "nutrition_weight": "56克"
+    },
+    {
+      "nutrition_rate": 300,
+      "nutrition_name": "脂肪",
+      "nutrition_weight": "73克"
+    },
+    {
+      "nutrition_rate": 500,
+      "nutrition_name": "碳水化物",
+      "nutrition_weight": "118克"
+    },
+    {
+      "nutrition_rate": 400,
+      "nutrition_name": "水",
+      "nutrition_weight": "288克"
+    }
+  ],
   "ingredents": [
     {
       "ingredent_name": "小龙虾",
-      "ingredent_weight": "1kg"
+      "ingredent_weight": 1,
+      "ingredent_unit": "kg"
     },
     {
       "ingredent_name": "干辣椒",
-      "ingredent_weight": "20克"
+      "ingredent_weight": 20,
+      "ingredent_unit": "克"
     },
     {
       "ingredent_name": "花椒",
-      "ingredent_weight": "6克"
+      "ingredent_weight": 6,
+      "ingredent_unit": "克"
     },
     {
       "ingredent_name": "姜片",
-      "ingredent_weight": "5片"
+      "ingredent_weight": 5,
+      "ingredent_unit": "片"
     },
     {
       "ingredent_name": "桂皮",
-      "ingredent_weight": "1根"
+      "ingredent_weight": 1,
+      "ingredent_unit": "根"
     },
     {
       "ingredent_name": "蒜瓣",
-      "ingredent_weight": "10片"
+      "ingredent_weight": 10,
+      "ingredent_unit": "片"
     },
     {
       "ingredent_name": "肉蔻",
-      "ingredent_weight": "3个"
+      "ingredent_weight": 3,
+      "ingredent_unit": "个"
     },
     {
       "ingredent_name": "香叶",
-      "ingredent_weight": "8片"
+      "ingredent_weight": 8,
+      "ingredent_unit": "片"
     },
     {
       "ingredent_name": "啤酒",
-      "ingredent_weight": "1罐"
+      "ingredent_weight": 1,
+      "ingredent_unit": "罐"
     },
     {
       "ingredent_name": "八角",
-      "ingredent_weight": "3个"
+      "ingredent_weight": 3,
+      "ingredent_unit": "个"
     },
     {
       "ingredent_name": "生抽",
-      "ingredent_weight": "8克"
+      "ingredent_weight": 8,
+      "ingredent_unit": "克"
     },
     {
       "ingredent_name": "鸡精",
-      "ingredent_weight": "3克"
+      "ingredent_weight": 3,
+      "ingredent_unit": "克"
     },
     {
       "ingredent_name": "胡椒粉",
-      "ingredent_weight": "2克"
+      "ingredent_weight": 2,
+      "ingredent_unit": "克"
     },
     {
       "ingredent_name": "老抽",
-      "ingredent_weight": "4克"
+      "ingredent_weight": 4,
+      "ingredent_unit": "克"
     },
     {
       "ingredent_name": "料酒",
-      "ingredent_weight": "5克"
+      "ingredent_weight": 5,
+      "ingredent_unit": "克"
     },
     {
       "ingredent_name": "盐",
-      "ingredent_weight": "3克"
+      "ingredent_weight": 3,
+      "ingredent_unit": "克"
     },
     {
       "ingredent_name": "糖",
-      "ingredent_weight": "2克"
+      "ingredent_weight": 2,
+      "ingredent_unit": "克"
     }
   ],
   "steps": [
@@ -120,15 +164,54 @@
     "stars": "50",
     "min": 0
   },
-  "food_review_images": [
-    "https://res1.hoto.cn/595b6009d637550fb408d4a0.jpg!w580",
-    "https://res1.hoto.cn/0304f57559633f0df444eb88.jpg!default",
-    "https://res1.hoto.cn/030efca659633f0df444eb88.jpg!default",
-    "https://res1.hoto.cn/030e1e5759633f0df444eb88.jpg!default",
-    "https://res1.hoto.cn/02fbc05259633f0df444eb88.jpg!default",
-    "https://i3.meishichina.com/attachment/recipe/2020/10/08/2020100816021565823108197577.jpg?x-oss-process=style/c320",
-    "https://i3.meishichina.com/attachment/recipe/2020/10/05/2020100516018763727048197577.jpg?x-oss-process=style/c320",
-    "https://i3.meishichina.com/attachment/recipe/2020/10/06/2020100616019692622831958079.jpg?x-oss-process=style/c320",
-    "https://i3.meishichina.com/attachment/recipe/2020/10/06/2020100616019715788221958079.jpg?x-oss-process=style/c320"
+  "comments": [
+    {
+      "user": "麦小麦的麦小麦",
+      "comment_content": "@M_六六 料酒黄酒也可以的。酒主要是祛除小龙虾的土腥味的。",
+      "comment_date": "2020-04-26",
+      "image": ""
+    },
+    {
+      "user": "M_六六",
+      "comment_content": "可不可以用别的东西来代替啤酒，我们不能喝酒",
+      "comment_date": "2019-07-31",
+      "image": ""
+    },
+    {
+      "user": "K_一一",
+      "comment_content": "看看我做的K_一一",
+      "comment_date": "2019-07-31",
+      "image": "https://res1.hoto.cn/0304f57559633f0df444eb88.jpg!default"
+    },
+    {
+      "user": "K_二二",
+      "comment_content": "看看我做的K_二二",
+      "comment_date": "2019-08-02",
+      "image": "https://res1.hoto.cn/030efca659633f0df444eb88.jpg!default"
+    },
+    {
+      "user": "K_三三",
+      "comment_content": "看看我做的K_三三",
+      "comment_date": "2019-08-01",
+      "image": "https://res1.hoto.cn/030e1e5759633f0df444eb88.jpg!default"
+    },
+    {
+      "user": "K_四四",
+      "comment_content": "看看我做的K_四四",
+      "comment_date": "2019-09-01",
+      "image": "https://res1.hoto.cn/02fbc05259633f0df444eb88.jpg!default"
+    },
+    {
+      "user": "K_五五",
+      "comment_content": "看看我做的K_五五",
+      "comment_date": "2019-10-02",
+      "image": "https://i3.meishichina.com/attachment/recipe/2020/10/08/2020100816021565823108197577.jpg?x-oss-process=style/c320"
+    },
+    {
+      "user": "K_六六",
+      "comment_content": "看看我做的K_六六",
+      "comment_date": "2019-10-02",
+      "image": "https://i3.meishichina.com/attachment/recipe/2020/10/05/2020100516018763727048197577.jpg?x-oss-process=style/c320"
+    }
   ]
 }

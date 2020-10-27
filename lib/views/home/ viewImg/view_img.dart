@@ -14,8 +14,8 @@ class ViewImg extends StatefulWidget {
   final pimgs;
   final pwidth;
 
-  Map<String, dynamic> img = {"url":"https://res1.hoto.cn/595b6009d637550fb408d4a0.jpg!w580","file":"File"};
-  List<Map<String, dynamic>> imgs =[{"url":"https://res1.hoto.cn/595b6009d637550fb408d4a0.jpg!w580","file":"File"},{"url":"https://res1.hoto.cn/0304f57559633f0df444eb88.jpg!default","file":"File"}];
+  Map<String, dynamic> img = {"url":"https://res1.hoto.cn/0304f57559633f0df444eb88.jpg!default"};
+  List<Map<String, dynamic>> imgs =[{"url":"https://res1.hoto.cn/595b6009d637550fb408d4a0.jpg!w580"},{"url":"https://res1.hoto.cn/0304f57559633f0df444eb88.jpg!default"}];
   double width = 30;
 
   @override
@@ -166,7 +166,8 @@ class _PageStatus extends State<ViewImg> {
             onHorizontalDragEnd: (e) {moveEnd(e,w,l);},
             child: Container(
               width: w,
-              child: i['url'] != null ? Image.network(i['url']) : Image.file(i['file']),
+              //child: i['url'] != null ? Image.network(i['url']) : Image.file(i['file']),
+              child: Image.network(i['url']),
             ),
           ),
         ),
