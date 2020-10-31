@@ -1,56 +1,76 @@
-class Person {
-  String name;
-  String avatarURL;
+class HomeList {
+  List<Dishs> dishs;
 
-  Person.fromMap(Map<String, dynamic> json) {
-    this.name = json["name"];
-    this.avatarURL = json["avatars"]["medium"];
+  HomeList({this.dishs});
+
+  HomeList.fromJson(Map<String, dynamic> json) {
+    if (json['dishs'] != null) {
+      dishs = new List<Dishs>();
+      json['dishs'].forEach((v) {
+        dishs.add(new Dishs.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.dishs != null) {
+      data['dishs'] = this.dishs.map((v) => v.toJson()).toList();
+    }
+    return data;
   }
 }
 
-class Actor extends Person {
-  Actor.fromMap(Map<String, dynamic> json): super.fromMap(json);
+class Dishs {
+  String dishType;
+  String dishTypeName;
+  int dishCount;
+  List<Dish> dish;
+
+  Dishs({this.dishType, this.dishTypeName, this.dishCount, this.dish});
+
+  Dishs.fromJson(Map<String, dynamic> json) {
+    dishType = json['dish_type'];
+    dishTypeName = json['dish_type_name'];
+    dishCount = json['dish_count'];
+    if (json['dish'] != null) {
+      dish = new List<Dish>();
+      json['dish'].forEach((v) {
+        dish.add(new Dish.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['dish_type'] = this.dishType;
+    data['dish_type_name'] = this.dishTypeName;
+    data['dish_count'] = this.dishCount;
+    if (this.dish != null) {
+      data['dish'] = this.dish.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
 }
 
-class Director extends Person {
-  Director.fromMap(Map<String, dynamic> json): super.fromMap(json);
-}
-int counter = 1;
+class Dish {
+  String dishId;
+  String dishName;
+  String dishImageLink;
 
-class Item {
-  int rank;
-  String imageURL;
-  String title;
-  String playDate;
-  double rating;
-  List<String> genres;
-  List<String> scrollName;
-  List<String> scrollImageURL;
-  List<String> foodNameType3;
-  List<String> foodImagesType3 ;
+  Dish({this.dishId, this.dishName, this.dishImageLink});
 
+  Dish.fromJson(Map<String, dynamic> json) {
+    dishId = json['dish_id'];
+    dishName = json['dish_name'];
+    dishImageLink = json['dish_image_link'];
+  }
 
-  List<Actor> casts;
-  Director director;
-  String originalTitle;
-
-  Item.fromMap(Map<String, dynamic> json) {
-    this.rank = counter++;
-    this.imageURL = json["images"]["medium"];
-    this.title = json["title"];
-    this.playDate = json["year"];
-    this.rating = json["rating"]["average"];
-    this.genres = json["genres"].cast<String>();
-    this.scrollImageURL = json["scroll_images"].cast<String>();
-    this.scrollName = json["scroll_name"].cast<String>();
-
-    this.foodNameType3 = json["food_name_type3"].cast<String>();
-    this.foodImagesType3 = json["food_images_type3"].cast<String>();
-
-    this.casts = (json["casts"] as List<dynamic>).map((item) {
-      return Actor.fromMap(item);
-    }).toList();
-    this.director = Director.fromMap(json["directors"][0]);
-    this.originalTitle = json["original_title"];
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['dish_id'] = this.dishId;
+    data['dish_name'] = this.dishName;
+    data['dish_image_link'] = this.dishImageLink;
+    return data;
   }
 }

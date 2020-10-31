@@ -32,10 +32,10 @@ class TopItemWidget extends StatelessWidget {
     var _imgSize = MediaQuery.of(context).size.width / 5 * 3;
 //    }
     var fontColor = Colors.white;
-    if ("type1" == type){
+    if ("bigImage" == type){
       _imgSize = _imgSize + 100;
       fontColor = Colors.red;
-    } else if ("type2" == type){
+    } else if ("smallImage" == type){
       _imgSize = _imgSize/2;
     } else {
       _imgSize = _imgSize/3;
