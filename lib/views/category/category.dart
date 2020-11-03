@@ -5,10 +5,10 @@ class Category extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("分类"),
+        title: Text("我的餐桌"),
       ),
       body: Center(
-        child: Text("分类",style: TextStyle(fontSize: 50)),
+        child: Text("餐桌",style: TextStyle(fontSize: 50)),
       ),
     );
   }

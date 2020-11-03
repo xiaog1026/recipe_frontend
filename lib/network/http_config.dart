@@ -1,15 +1,5 @@
-const BASE_URL = '';
-const TIMOUT = 5000;
+class Constant {
+ static const String BASE_URL = 'http://153.246.128.73:1991';
+ static const TIMOUT = 5000;
 
-///TOP250
- const String TOP_250 = '';
-
- const String IN_THEATERS = '';
-
- const String COMING_SOON = '';
-
- const String WEEKLY = '';
-
- const String CELEBRITY = '';
-
- const String REIVIEWS = '';
+}

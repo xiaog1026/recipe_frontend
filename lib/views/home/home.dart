@@ -5,6 +5,13 @@ import 'package:lovekitchen/network/http_request.dart';
 import 'package:lovekitchen/network/mock_request.dart';
 import 'package:lovekitchen/views/home/childCpns/list_item.dart';
 import 'package:lovekitchen/views/home/home_list_page.dart';
+import 'dart:async';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:flutter_easyrefresh/material_header.dart';
+import 'package:flutter_easyrefresh/material_footer.dart';
+import 'package:lovekitchen/network/http_config.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -24,53 +31,117 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
-  List<Item> items = [];
-  List<Dishs> dishs = [];
+  EasyRefreshController _controller;
+  List<Cards> cardsList = [];
+  int pageIndex = 1;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    
-    // HttpRequest.request("https://flutter.cn/docs/development/ui/layout#1-select-a-layout-widget").then((res){
-    //   print(res);
-    // });
-    // MockRequest.mockHome().then((res){
-    //   final subjects = res["subjects"];
-    //   List<Item> subItems = [];
-    //   for(var sub in subjects){
-    //     subItems.add(Item.fromMap(sub));
-    //   }
-    //   // 状态改变
-    //   setState(() {
-    //     this.items = subItems;
-    //   });
-    // });
-
-    MockRequest.mockHome().then((res){
-      final subjects = res["dishs"];
-      List<Dishs> subItems = [];
-      for(var sub in subjects){
-        subItems.add(Dishs.fromJson(sub));
-      }
-      // 状态改变
-      setState(() {
-        this.dishs = subItems;
-      });
-    });
-
+    _controller = EasyRefreshController();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ListView.builder(
-        itemCount: dishs.length,
-        itemBuilder: (BuildContext context, int index){
-          //return ListItem(items[index]);
-          return HomeListPage(dishs[index]);
-        },
-      ),
-    );
+    return EasyRefresh.custom(
+          firstRefresh: true,
+          enableControlFinishRefresh: false,
+          enableControlFinishLoad: true,
+          controller: _controller,
+          header: MaterialHeader(),
+          footer: MaterialFooter(),
+          onRefresh: () async {
+            await Future.delayed(Duration(seconds: 2), () {
+              print('onRefresh');
+              //dataRefreshByMock();
+              dataLoadByHttp();
+              _controller.resetLoadState();
+            });
+          },
+          onLoad: () async {
+            await Future.delayed(Duration(seconds: 2), () {
+              print('onLoad');
+              //dataLoadByMock();
+              dataLoadByHttp();
+              _controller.finishLoad(noMore: this.cardsList.length >= 10);
+            });
+          },
+          slivers: <Widget>[
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                  return Container(
+                    child: Center(
+                      child: HomeListPage(cardsList[index]),
+                    )
+                  );
+                },
+                childCount: this.cardsList.length,
+              ),
+            ),
+          ],
+        );
+  }
+
+  void dataRefreshByHttp(){
+    HttpRequest.request(Constant.BASE_URL + "/card/card_page="+1.toString() + "/n_cards=6/n_dishs=6").then((res){
+      final subjects = res["cards"];
+      //print(subjects);
+      List<Cards> subItems = [];
+      for(var sub in subjects){
+        subItems.add(Cards.fromJson(sub));
+      }
+      // 状态改变
+      setState(() {
+        this.cardsList = subItems;
+      });
+      //print(this.cardsList.length);
+    });
+  }
+
+  void dataLoadByHttp(){
+    pageIndex++;
+    HttpRequest.request(Constant.BASE_URL + "/card/card_page=" + pageIndex.toString() + "/n_cards=6/n_dishs=6").then((res){
+
+      final subjects = res["cards"];
+      //print(subjects);
+      List<Cards> subItems = [];
+      for(var sub in subjects){
+        subItems.add(Cards.fromJson(sub));
+      }
+      // 状态改变
+      setState(() {
+        this.cardsList.addAll(subItems);
+      });
+      print(pageIndex);
+    });
+  }
+
+  void dataRefreshByMock(){
+    MockRequest.mockHome().then((res){
+      final subjects = res["cards"];
+      List<Cards> subItems = [];
+      for(var sub in subjects){
+        subItems.add(Cards.fromJson(sub));
+      }
+      // 状态改变
+      setState(() {
+        this.cardsList = subItems;
+      });
+    });
+  }
+
+  void dataLoadByMock(){
+    MockRequest.mockHome().then((res){
+      final subjects = res["cards"];
+      List<Cards> subItems = [];
+      for(var sub in subjects){
+        subItems.add(Cards.fromJson(sub));
+      }
+      // 状态改变
+      setState(() {
+        this.cardsList.addAll(subItems);
+      });
+    });
   }
 }

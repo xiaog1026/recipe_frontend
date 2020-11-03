@@ -11,7 +11,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 /// 首页菜谱一栏
 class HomeListPage extends StatelessWidget {
   // 首页组件变量
-  final Dishs dishs;
+  final Cards dishs;
   // 首页组件构造函数
   HomeListPage(this.dishs);
   // 横向滚动图片大小
@@ -32,20 +32,11 @@ class HomeListPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          // 标题显示 首页模块1
+          // 标题显示
           getItemCountTitleWidget(this.dishs.dishTypeName,this.dishs.dishCount),
-          // 横向滚动大图组件(首页模块1，今日特辑 )
+          // 横向滚动组件
           getScrollImage(),
           SizedBox(height: 5),
-          // // 标题显示 首页模块2
-          // getItemCountTitleWidget('新品推荐', 5),
-          // // 横向滚动小图组件(首页模块2，新品推荐 )
-          // getScrollSmallImage(),
-          // SizedBox(height: 5),
-          // // 标题显示 首页模块3
-          // getItemCountTitleWidget('我们都在看', 9),
-          // getScrollNestedImage(),
-          // SizedBox(height: 5),
         ],
       ),
     );
@@ -64,11 +55,23 @@ class HomeListPage extends StatelessWidget {
     );
   }
 
-  // 横向滚动大图 模块1组件
+  // 横向滚动图片组件
   Widget getScrollImage() {
+    if("nestedImage" == this.dishs.dishType){
+      return getScrollNestedImage();
+    }else{
+      return getSubScrollImage();
+    }
+  }
+  // 横向滚动图片组件(小图和大图)
+  Widget getSubScrollImage() {
+    double _height = 250.0;
+    if("smallImage" == this.dishs.dishType){
+      _height = 130.0;
+    }
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5.0),
-      height: 250.0,
+      height: _height,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
@@ -79,71 +82,70 @@ class HomeListPage extends StatelessWidget {
     );
   }
 
-  // 横向滚动小图组件
-  // Widget getScrollSmallImage() {
-  //   return Container(
-  //     margin: EdgeInsets.symmetric(vertical: 5.0),
-  //     height: 150.0,
-  //     child: ListView(
-  //       scrollDirection: Axis.horizontal,
-  //       children: <Widget>[
-  //         getImageByType2(0),
-  //         getImageByType2(1),
-  //         getImageByType2(2),
-  //         getImageByType2(3),
-  //         getImageByType2(4)
-  //       ],
-  //     ),
-  //   );
-  // }
+  //横向滚动嵌套图片组件
+  Widget getScrollNestedImage() {
+    int _index = 1;
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 5.0),
+      height: 210.0,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          // 一列三行组件
+          for (var i = 1; i < this.dishs.dish.length + 1; i = i + 3)
+            getColumnWidgetByNestedImage(i),
+          //getContentWidget()
+        ],
+      ),
+    );
+  }
 
-  // 横向滚动嵌套图片组件 模块3组件
-  // Widget getScrollNestedImage() {
-  //   return Container(
-  //     margin: EdgeInsets.symmetric(vertical: 5.0),
-  //     height: 210.0,
-  //     child: ListView(
-  //       scrollDirection: Axis.horizontal,
-  //       children: <Widget>[
-  //         // 一列三行组件
-  //         getColumnWidgetByType3(1),
-  //         getColumnWidgetByType3(4),
-  //         getColumnWidgetByType3(7)
-  //         //getContentWidget()
-  //       ],
-  //     ),
-  //   );
-  // }
+  //一列三行组件 模块3组件
+  Widget getColumnWidgetByNestedImage(int index ) {
+    return Container(
+      height: 150,
+      width: 300,
+      child: Column(
+        children: <Widget>[
+          get3RowWidget(index - 1),
+          get3RowWidget(index),
+          get3RowWidget(index + 1)
+        ],
+      ),
+    );
+  }
 
-  // 一列三行组件 模块3组件
-  // Widget getColumnWidgetByType3(int index ) {
-  //   return Container(
-  //     height: 150,
-  //     child: Column(
-  //       children: <Widget>[
-  //         getRowWidgetByType3(index - 1),
-  //         getRowWidgetByType3(index),
-  //         getRowWidgetByType3(index + 1)
-  //       ],
-  //     ),
-  //   );
-  // }
+  //行组件 模块3组件
+  Widget get3RowWidget(int index) {
+    return GestureDetector(
+      child: Container(
+        height: 70,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            getImageByNestedImage(index),
+            getContentByNestedImage(index)
+          ],
+        ),
+      ),
+      onTap: () {
+        Router.push(context, Router.detailItemPage, this.dishs.dish[index].dishId);
+      },
+    );
 
-  // 行组件 模块3组件
-  // Widget getRowWidgetByType3(int index) {
-  //   return Container(
-  //     height: 70,
-  //     child: Row(
-  //       crossAxisAlignment: CrossAxisAlignment.start,
-  //       children: <Widget>[
-  //         getImageByType3(index),
-  //         getContentByType3(index)
-  //       ],
-  //     ),
-  //   );
-  // }
+    return Container(
+      height: 70,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          getImageByNestedImage(index),
+          getContentByNestedImage(index)
+        ],
+      ),
+    );
+  }
 
-  // 模块1获取显示的图片组件
+  // 显示的图片组件
   Widget getImageByType(Dish dish) {
     return GestureDetector(
       child: TopItemWidget(
@@ -152,69 +154,61 @@ class HomeListPage extends StatelessWidget {
           type: this.dishs.dishType
       ),
       onTap: () {
-        Router.push(context, Router.detailItemPage, "1");
+        Router.push(context, Router.detailItemPage, dish.dishId);
       },
     );
   }
-  // 模块2获取显示的图片组件
-  // Widget getImageByType2(int index) {
-  //   return TopItemWidget(
-  //       title: item.scrollName[index],
-  //       url: item.scrollImageURL[index],
-  //       type: "type2"
-  //   );
-  // }
-  // 模块3获取显示的图片组件
-  // Widget getImageByType3(int index) {
-  //   return TopItemWidget(
-  //       title: item.foodNameType3[index],
-  //       url: item.foodImagesType3[index],
-  //       type: "type3"
-  //   );
-  // }
-  // 模块3获取显示内容组件
-  // Widget getContentByType3(int index) {
-  //   return Container(
-  //     padding: EdgeInsets.symmetric(horizontal: 15),
-  //     child: Column(
-  //       crossAxisAlignment: CrossAxisAlignment.start,
-  //       children: <Widget>[
-  //         getRankWidgetByType3(index),
-  //         SizedBox(height: 3,),
-  //         getTitleWidget(item.foodNameType3[index]),
-  //       ],
-  //     ),
-  //   );
-  // }
+  // 获取显示的图片嵌套组件
+  Widget getImageByNestedImage(int index) {
+    return TopItemWidget(
+        title: this.dishs.dish[index].dishName,
+        url: this.dishs.dish[index].dishImageLink,
+        type: "nestedImage"
+    );
+  }
+  // 获取显示内容嵌套组件
+  Widget getContentByNestedImage(int index) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          getRankWidgetByNestedImage(index),
+          SizedBox(height: 3,),
+          getTitleWidget(this.dishs.dish[index].dishName),
+        ],
+      ),
+    );
+  }
 
-  // 模块3排名组件
-  // Widget getRankWidgetByType3(index) {
-  //   index++;
-  //   return Container(
-  //       padding: EdgeInsets.fromLTRB(9, 4, 9, 4),
-  //       decoration: BoxDecoration(
-  //           borderRadius: BorderRadius.circular(3),
-  //           color: Color.fromARGB(255, 238, 205, 144)
-  //       ),
-  //       child: Text(
-  //         "No."+index.toString(),
-  //         style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 131, 95, 36)),
-  //       )
-  //   );
-  // }
+  // 排名嵌套组件
+  Widget getRankWidgetByNestedImage(index) {
+    index++;
+    return Container(
+        padding: EdgeInsets.fromLTRB(9, 4, 9, 4),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(3),
+            color: Color.fromARGB(255, 238, 205, 144)
+        ),
+        child: Text(
+          "No."+index.toString(),
+          style: TextStyle(fontSize: 13, color: Color.fromARGB(255, 131, 95, 36)),
+        )
+    );
+  }
 
-  // 模块3获取名称信息等组件
+  // 获取名称信息等嵌套组件
   Widget getTitleWidget(String foodName) {
     return Stack(
       children: <Widget>[
-        Icon(Icons.play_circle_outline, color: Colors.redAccent,),
+        //Icon(Icons.play_circle_outline, color: Colors.redAccent,),
         Text.rich(
           TextSpan(
               children: [
                 TextSpan(
-                    text: "     " + foodName,
+                    text: foodName,
                     style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold
                     )
                 ),

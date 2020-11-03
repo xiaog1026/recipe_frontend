@@ -1,35 +1,35 @@
 class HomeList {
-  List<Dishs> dishs;
+  List<Cards> cards;
 
-  HomeList({this.dishs});
+  HomeList({this.cards});
 
   HomeList.fromJson(Map<String, dynamic> json) {
-    if (json['dishs'] != null) {
-      dishs = new List<Dishs>();
-      json['dishs'].forEach((v) {
-        dishs.add(new Dishs.fromJson(v));
+    if (json['cards'] != null) {
+      cards = new List<Cards>();
+      json['cards'].forEach((v) {
+        cards.add(new Cards.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.dishs != null) {
-      data['dishs'] = this.dishs.map((v) => v.toJson()).toList();
+    if (this.cards != null) {
+      data['cards'] = this.cards.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
-class Dishs {
+class Cards {
   String dishType;
   String dishTypeName;
   int dishCount;
   List<Dish> dish;
 
-  Dishs({this.dishType, this.dishTypeName, this.dishCount, this.dish});
+  Cards({this.dishType, this.dishTypeName, this.dishCount, this.dish});
 
-  Dishs.fromJson(Map<String, dynamic> json) {
+  Cards.fromJson(Map<String, dynamic> json) {
     dishType = json['dish_type'];
     dishTypeName = json['dish_type_name'];
     dishCount = json['dish_count'];
@@ -54,7 +54,7 @@ class Dishs {
 }
 
 class Dish {
-  String dishId;
+  int dishId;
   String dishName;
   String dishImageLink;
 
@@ -63,6 +63,16 @@ class Dish {
   Dish.fromJson(Map<String, dynamic> json) {
     dishId = json['dish_id'];
     dishName = json['dish_name'];
+    if (dishName.length > 10 ){
+      dishName = dishName.substring(0,10) + "..";
+    }
+    // else {
+    //   while(dishName.length < 22) {
+    //     dishName = dishName + " ";
+    //   }
+    // }
+    print(dishName);
+    print(dishName.length);
     dishImageLink = json['dish_image_link'];
   }
 

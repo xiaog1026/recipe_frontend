@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
 import 'http_config.dart';
+import 'dart:convert';
 
 class HttpRequest{
   // 1.创建DIO实例
   static BaseOptions baseOptions = BaseOptions(
-      baseUrl: BASE_URL,
-      connectTimeout: TIMOUT
+      // baseUrl: BASE_URL,
+      // connectTimeout: TIMOUT
   );
 
   static final dio = Dio(baseOptions);
@@ -14,8 +15,9 @@ class HttpRequest{
 
     //2.发送网络请求
     Options options = Options(method: method);
-    final result = await dio.request(url,queryParameters: params, options: options);
-    return result;
+    var responseStr  = await dio.request(url,queryParameters: params, options: options);
+    var responseJson = json.decode(responseStr.toString());
+    return responseJson;
   }
 }
 

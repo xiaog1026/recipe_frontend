@@ -14,7 +14,7 @@ class ViewImg extends StatefulWidget {
   final pimgs;
   final pwidth;
 
-  Map<String, dynamic> img = {"url":"https://res1.hoto.cn/0304f57559633f0df444eb88.jpg!default"};
+  Map<String, dynamic> img = {"url":"hhttps://res1.hoto.cn/595b6009d637550fb408d4a0.jpg!w580"};
   List<Map<String, dynamic>> imgs =[{"url":"https://res1.hoto.cn/595b6009d637550fb408d4a0.jpg!w580"},{"url":"https://res1.hoto.cn/0304f57559633f0df444eb88.jpg!default"}];
   double width = 30;
 

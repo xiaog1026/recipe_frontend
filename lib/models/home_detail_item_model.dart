@@ -1,49 +1,49 @@
 class HomeDetailItem {
-  String dishId;
-  String dishName;
+  int id;
+  String dishname;
+  String author;
+  Null level;
+  Null tool;
   String dishImageLink;
   String dishVedioLink;
-  String author;
-  String level;
-  String tool;
   List<Nutritions> nutritions;
-  List<Ingredents> ingredents;
+  List<Ingredients> ingredients;
   List<Steps> steps;
   Rating rating;
   List<Comments> comments;
 
   HomeDetailItem(
-      {this.dishId,
-        this.dishName,
-        this.dishImageLink,
-        this.dishVedioLink,
+      {this.id,
+        this.dishname,
         this.author,
         this.level,
         this.tool,
+        this.dishImageLink,
+        this.dishVedioLink,
         this.nutritions,
-        this.ingredents,
+        this.ingredients,
         this.steps,
         this.rating,
         this.comments});
 
   HomeDetailItem.fromJson(Map<String, dynamic> json) {
-    dishId = json['dish_id'];
-    dishName = json['dish_name'];
-    dishImageLink = json['dish_image_link'];
-    dishVedioLink = json['dish_vedio_link'];
+    id = json['id'];
+    dishname = json['dishname'];
     author = json['author'];
     level = json['level'];
     tool = json['tool'];
+    dishImageLink = json['dish_image_link'];
+    dishVedioLink = json['dish_vedio_link'];
     if (json['nutritions'] != null) {
       nutritions = new List<Nutritions>();
       json['nutritions'].forEach((v) {
         nutritions.add(new Nutritions.fromJson(v));
       });
     }
-    if (json['ingredents'] != null) {
-      ingredents = new List<Ingredents>();
-      json['ingredents'].forEach((v) {
-        ingredents.add(new Ingredents.fromJson(v));
+    if (json['ingredients'] != null) {
+      ingredients = new List<Ingredients>();
+      json['ingredients'].forEach((v) {
+        ingredients.add(new Ingredients.fromJson(v));
       });
     }
     if (json['steps'] != null) {
@@ -64,18 +64,18 @@ class HomeDetailItem {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['dish_id'] = this.dishId;
-    data['dish_name'] = this.dishName;
-    data['dish_image_link'] = this.dishImageLink;
-    data['dish_vedio_link'] = this.dishVedioLink;
+    data['id'] = this.id;
+    data['dishname'] = this.dishname;
     data['author'] = this.author;
     data['level'] = this.level;
     data['tool'] = this.tool;
+    data['dish_image_link'] = this.dishImageLink;
+    data['dish_vedio_link'] = this.dishVedioLink;
     if (this.nutritions != null) {
       data['nutritions'] = this.nutritions.map((v) => v.toJson()).toList();
     }
-    if (this.ingredents != null) {
-      data['ingredents'] = this.ingredents.map((v) => v.toJson()).toList();
+    if (this.ingredients != null) {
+      data['ingredients'] = this.ingredients.map((v) => v.toJson()).toList();
     }
     if (this.steps != null) {
       data['steps'] = this.steps.map((v) => v.toJson()).toList();
@@ -93,7 +93,7 @@ class HomeDetailItem {
 class Nutritions {
   int nutritionRate;
   String nutritionName;
-  String nutritionWeight;
+  double nutritionWeight;
 
   Nutritions({this.nutritionRate, this.nutritionName, this.nutritionWeight});
 
@@ -112,14 +112,14 @@ class Nutritions {
   }
 }
 
-class Ingredents {
+class Ingredients {
   String ingredentName;
-  int ingredentWeight;
+  double ingredentWeight;
   String ingredentUnit;
 
-  Ingredents({this.ingredentName, this.ingredentWeight, this.ingredentUnit});
+  Ingredients({this.ingredentName, this.ingredentWeight, this.ingredentUnit});
 
-  Ingredents.fromJson(Map<String, dynamic> json) {
+  Ingredients.fromJson(Map<String, dynamic> json) {
     ingredentName = json['ingredent_name'];
     ingredentWeight = json['ingredent_weight'];
     ingredentUnit = json['ingredent_unit'];
@@ -154,10 +154,10 @@ class Steps {
 }
 
 class Rating {
-  int max;
+  double max;
   double average;
-  String stars;
-  int min;
+  double stars;
+  double min;
 
   Rating({this.max, this.average, this.stars, this.min});
 

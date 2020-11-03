@@ -12,14 +12,15 @@ import 'package:lovekitchen/constant/color_constant.dart';
 import 'package:lovekitchen/constant/text_size_constant.dart';
 import 'package:lovekitchen/models/home_detail_item_model.dart';
 import 'package:lovekitchen/network/mock_request.dart';
+import 'package:lovekitchen/network/http_request.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 
 class DetailItemPage extends StatelessWidget {
 
-  final subjectId;
+  final String id;
   BuildContext context;
-  DetailItemPage(this.subjectId, {Key key}) : super(key: key);
+  DetailItemPage(this.id, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext lcontext) {
@@ -29,17 +30,21 @@ class DetailItemPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("详细"),
       ),
-      body: DetailItemHomePage(),
+      body: DetailItemHomePage(id),
     );
   }
 }
 class DetailItemHomePage extends StatefulWidget {
+  final String _id;
+  DetailItemHomePage(this._id);
+
   @override
-  _DetailItemHomePage createState() => _DetailItemHomePage();
+  _DetailItemHomePage createState() => _DetailItemHomePage(_id);
 }
 
 class _DetailItemHomePage extends State<DetailItemHomePage> {
-
+  final String _dashId;
+  _DetailItemHomePage(this._dashId);
   int _counter = 1;
 
   // 首页详细信息
@@ -48,8 +53,11 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // HttpRequest.request("https://flutter.cn/docs/development/ui/layout#1-select-a-layout-widget").then((res){
-    //   print(res);
+print(this._dashId);
+    // HttpRequest.request("http://153.246.128.73:1991/dish/dish_id=5").then((res){
+    //   setState(() {
+    //     this.homeDetailItem = HomeDetailItem.fromJson(res);
+    //   });
     // });
     MockRequest.mockHomeDetailItem().then((res){
       //print(res);
@@ -80,10 +88,11 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
 
   @override
   Widget build(BuildContext context) {
+
     // print("dddsds");
     // print(this.homeDetailItem.dishId);
     // print(this.homeDetailItem.level);
-    if(this.homeDetailItem.dishId == null){
+    if(this.homeDetailItem.id == null){
       return Scaffold(
       );
     }
@@ -169,7 +178,7 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
       height: 250.0,
       child: GestureDetector(
         child: VideoItemWidget(
-            title: this.homeDetailItem.dishName,
+            title: this.homeDetailItem.dishname,
             url: this.homeDetailItem.dishImageLink,
             type: "type1"
         ),
@@ -228,7 +237,7 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
         ),
         SizedBox(width: 5),
         //for (var item in this.homeDetailItem.ingredents) Text(item.ingredentName + "  " + item.ingredentWeight),
-        for (var item in this.homeDetailItem.ingredents)
+        for (var item in this.homeDetailItem.ingredients)
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -289,7 +298,7 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
   Widget getScrollWidgetNutrition() {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 4.0),
-      height: 100.0,
+      height: 90.0,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
@@ -423,7 +432,21 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
               child: Container(
                   width: 300,
                   child: _image == null
-                      ? Text('咔嚓一下，分享你的美食')
+                      ?
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        "咔嚓一下，分享你的美食",
+                        style: TextStyle(
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      SizedBox(width: 5)
+                    ],
+                  )
                       : Image.file(_image)),
             ),
             Row(

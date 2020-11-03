@@ -1,14 +1,8 @@
-import 'http_config.dart';
 import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
-import 'package:lovekitchen/models/home_detail_item_model.dart';
 ///模拟数据
 class MockRequest {
-
-  Future<dynamic> get(String action, {Map params}) async {
-    return MockRequest.mock(action: getJsonName(action), params: params);
-  }
 
   static Future<dynamic> post({String action, Map params}) async {
     return MockRequest.mock(action: action, params: params);
@@ -22,26 +16,14 @@ class MockRequest {
 
   static Future<dynamic> mockHome() async {
     //var responseStr = await rootBundle.loadString('mock/home.json');
-    var responseStr = await rootBundle.loadString('mock/home_list.json');
+    var responseStr = await rootBundle.loadString('mock/home_list1.json');
     var responseJson = json.decode(responseStr);
     return responseJson;
   }
 
   static Future<dynamic> mockHomeDetailItem() async {
-    var responseStr = await rootBundle.loadString('mock/home_detail_item.json');
+    var responseStr = await rootBundle.loadString('mock/home_detail_item1.json');
     var responseJson = json.decode(responseStr);
     return responseJson;
-  }
-
-  Map<String, String> map = {
-    IN_THEATERS: 'in_theaters',
-    COMING_SOON: 'coming_soon',
-    TOP_250: 'top250',
-    WEEKLY: 'weekly',
-    REIVIEWS: 'reviews',
-  };
-
-  getJsonName(String action) {
-    return map[action];
   }
 }

@@ -46,8 +46,8 @@ class MyStackPageState extends State<MyStackPage> {
               title: Text("首页")
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.category),
-              title: Text("分类")
+              icon: Icon(Icons.fastfood),
+              title: Text("餐桌")
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.add_to_photos),

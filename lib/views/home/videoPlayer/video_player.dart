@@ -18,7 +18,7 @@ class VideoPage extends StatelessWidget {
         // 该组件宽高默认填充父控件，你也可以自己设置宽高
         child: VideoPlayerUI.network(
           url:homeDetailItem.dishVedioLink,
-          title: homeDetailItem.dishName,
+          title: homeDetailItem.dishname,
         ),
       ),
     );
