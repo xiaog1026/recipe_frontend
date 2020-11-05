@@ -1,0 +1,32 @@
+{
+  "dish_type": "smallImage",
+  "dish_type_name": "每日菜单",
+  "dish_count": 5,
+  "dish": [
+    {
+      "dish_id": 7,
+      "dish_name": "宝宝辅食-丁香鱼奶酪厚蛋烧",
+      "dish_image_link": "https://cp1.douguo.com/upload/caiku/8/c/e/690x390_8c741dda37318a0a0a512580e79380ae.jpg"
+    },
+    {
+      "dish_id": 34,
+      "dish_name": "酱香鱼",
+      "dish_image_link": "https://cp1.douguo.com/upload/caiku/7/f/1/690x390_7ffdcdc69ca3831914b62fde3d863de1.jpg"
+    },
+    {
+      "dish_id": 62,
+      "dish_name": "蒜香鱼排",
+      "dish_image_link": "https://cp1.douguo.com/upload/caiku/d/5/8/690x390_d5ce72049254de1c0f8e826f43fdd698.jpg"
+    },
+    {
+      "dish_id": 76,
+      "dish_name": "醋香鱼块",
+      "dish_image_link": "https://cp1.douguo.com/upload/caiku/e/b/d/690x390_eb9dd4e76714351da7ae71573fb2094d.jpg"
+    },
+    {
+      "dish_id": 147,
+      "dish_name": "橘丁香菇肉酱",
+      "dish_image_link": "https://cp1.douguo.com/upload/caiku/6/7/e/690x390_67b273dce8630b9e0718fd51762c862e.jpg"
+    }
+  ]
+}

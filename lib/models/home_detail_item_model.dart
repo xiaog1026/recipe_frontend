@@ -2,8 +2,8 @@ class HomeDetailItem {
   int id;
   String dishname;
   String author;
-  Null level;
-  Null tool;
+  String level;
+  String tool;
   String dishImageLink;
   String dishVedioLink;
   List<Nutritions> nutritions;
@@ -91,7 +91,7 @@ class HomeDetailItem {
 }
 
 class Nutritions {
-  int nutritionRate;
+  double nutritionRate;
   String nutritionName;
   double nutritionWeight;
 

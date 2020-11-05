@@ -71,8 +71,8 @@ class Dish {
     //     dishName = dishName + " ";
     //   }
     // }
-    print(dishName);
-    print(dishName.length);
+    // print(dishName);
+    // print(dishName.length);
     dishImageLink = json['dish_image_link'];
   }
 

@@ -8,17 +8,18 @@ import 'package:lovekitchen/widgets/item_count_title.dart';
 import 'package:lovekitchen/widgets/top_item_widget.dart';
 import 'package:lovekitchen/router.dart';
 import 'package:lovekitchen/widgets/video_item_widget.dart';
+import 'package:lovekitchen/widgets/image_item_widget.dart';
 import 'package:lovekitchen/constant/color_constant.dart';
 import 'package:lovekitchen/constant/text_size_constant.dart';
 import 'package:lovekitchen/models/home_detail_item_model.dart';
 import 'package:lovekitchen/network/mock_request.dart';
 import 'package:lovekitchen/network/http_request.dart';
-
+import 'package:lovekitchen/network/http_config.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class DetailItemPage extends StatelessWidget {
 
-  final String id;
+  final int id;
   BuildContext context;
   DetailItemPage(this.id, {Key key}) : super(key: key);
 
@@ -35,7 +36,7 @@ class DetailItemPage extends StatelessWidget {
   }
 }
 class DetailItemHomePage extends StatefulWidget {
-  final String _id;
+  final int _id;
   DetailItemHomePage(this._id);
 
   @override
@@ -43,7 +44,7 @@ class DetailItemHomePage extends StatefulWidget {
 }
 
 class _DetailItemHomePage extends State<DetailItemHomePage> {
-  final String _dashId;
+  final int _dashId;
   _DetailItemHomePage(this._dashId);
   int _counter = 1;
 
@@ -53,19 +54,18 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-print(this._dashId);
-    // HttpRequest.request("http://153.246.128.73:1991/dish/dish_id=5").then((res){
-    //   setState(() {
-    //     this.homeDetailItem = HomeDetailItem.fromJson(res);
-    //   });
-    // });
-    MockRequest.mockHomeDetailItem().then((res){
-      //print(res);
-      // 状态改变
+    HttpRequest.request(Constant.BASE_URL + "/dish/dish_id=" + this._dashId.toString()).then((res){
       setState(() {
         this.homeDetailItem = HomeDetailItem.fromJson(res);
       });
     });
+    // MockRequest.mockHomeDetailItem().then((res){
+    //   //print(res);
+    //   // 状态改变
+    //   setState(() {
+    //     this.homeDetailItem = HomeDetailItem.fromJson(res);
+    //   });
+    // });
   }
   File _image;
   final picker = ImagePicker();
@@ -89,9 +89,6 @@ print(this._dashId);
   @override
   Widget build(BuildContext context) {
 
-    // print("dddsds");
-    // print(this.homeDetailItem.dishId);
-    // print(this.homeDetailItem.level);
     if(this.homeDetailItem.id == null){
       return Scaffold(
       );
@@ -108,7 +105,7 @@ print(this._dashId);
               mainAxisSize:MainAxisSize.max,
               children:<Widget>[
                 //视频图片
-                getImageByVideo(),
+                getImage(),
                 SizedBox(height:5),
                 //评价星星
                 getRatingWidget(),
@@ -172,6 +169,15 @@ print(this._dashId);
     );
   }
 // 显示的菜谱主图片组件
+  Widget getImage() {
+    if(this.homeDetailItem.dishVedioLink == ""){
+      return getImageByImage();
+    } else {
+      return getImageByVideo();
+    }
+  }
+
+// 显示的菜谱主图片组件(有视频时)
   Widget getImageByVideo() {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5.0),
@@ -189,12 +195,27 @@ print(this._dashId);
     );
   }
 
+  // 显示的菜谱主图片组件(无视频时)
+  Widget getImageByImage() {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 5.0),
+      height: 250.0,
+      child: GestureDetector(
+        child: ImageItemWidget(
+            title: this.homeDetailItem.dishname,
+            url: this.homeDetailItem.dishImageLink,
+            type: "type1"
+        ),
+      ),
+    );
+  }
+
 // 评价星星组件
   Widget getRatingWidget() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        StarRating(rating: 9, size: 18,),
+        StarRating(rating: this.homeDetailItem.rating.average, size: 18,),
         SizedBox(width: 5),
         Text("9")
       ],
@@ -304,20 +325,20 @@ print(this._dashId);
         children: <Widget>[
           //for (int i = 0 ; i < this.homeDetailItem.nutritions.length ; i++)
           for(Nutritions nutrition in this.homeDetailItem.nutritions)
-          getNutrition(nutrition.nutritionRate,nutrition.nutritionName,nutrition.nutritionWeight)
+          getNutrition(nutrition.nutritionName,nutrition.nutritionWeight)
         ],
       ),
     );
   }
 
   // 营养图片子组件
-  Widget getNutrition(int rate, var name,var value) {
+  Widget getNutrition(var name,double value) {
     return Stack(
       children: <Widget>[
         DecoratedBox(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors:[Colors.white,Colors.blue[rate]]
+                colors:[Colors.white,Colors.blue[100]]
             ), //背景渐变
             boxShadow: [ //阴影
               BoxShadow(
@@ -333,13 +354,13 @@ print(this._dashId);
             shape: BoxShape.circle,
           ),
           child: Container(
-            height: 120,
-            width: 120,
+            height: 100,
+            width: 100,
           ),
         ),
         Positioned(
           top: 30,
-          left: 40,
+          left: 10,
           child: Text(
             name,
             style: TextStyle(
@@ -350,9 +371,9 @@ print(this._dashId);
         ),
         Positioned(
           top: 50,
-          left: 40,
+          left: 10,
           child: Text(
-            value,
+            value.toString(),
             style: TextStyle(
               fontSize: 13.0,
               color: Colors.black,

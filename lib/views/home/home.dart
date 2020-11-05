@@ -113,7 +113,7 @@ class _HomeBodyState extends State<HomeBody> {
       setState(() {
         this.cardsList.addAll(subItems);
       });
-      print(pageIndex);
+      //print(pageIndex);
     });
   }
 
