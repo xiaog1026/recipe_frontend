@@ -3,7 +3,6 @@ import 'package:lovekitchen/models/home_model.dart';
 import 'package:lovekitchen/models/home_list_model.dart';
 import 'package:lovekitchen/network/http_request.dart';
 import 'package:lovekitchen/network/mock_request.dart';
-import 'package:lovekitchen/views/home/childCpns/list_item.dart';
 import 'package:lovekitchen/views/home/home_list_page.dart';
 import 'dart:async';
 import 'package:flutter_easyrefresh/easy_refresh.dart';

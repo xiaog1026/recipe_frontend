@@ -23,16 +23,23 @@ class MyTableBody extends StatefulWidget {
 
 class _MyTableBodyState extends State<MyTableBody> {
   // 我的餐桌变量
-  MyTableItem myTableItem;
+  MyTableItem myTableItem = new MyTableItem();
 
   @override
   void initState() {
     super.initState();
+    MockRequest.mockMyTable().then((res){
+      setState(() {
+        this.myTableItem = MyTableItem.fromJson(res);
+      });
+    });
   }
   @override
   Widget build(BuildContext context) {
-    dataByMock();
-
+    if(this.myTableItem == null){
+      return Scaffold(
+      );
+    }
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(10),
@@ -43,9 +50,9 @@ class _MyTableBodyState extends State<MyTableBody> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             // 标题显示
-            getItemCountTitleWidget(this.myTableItem.dishTypeName,this.myTableItem.dishCount),
+            //getItemCountTitleWidget(this.myTableItem.dishTypeName,this.myTableItem.dishCount),
             // 横向滚动组件
-            getSubScrollImage(),
+            //getSubScrollImage(),
             SizedBox(height: 5),
           ],
         ),
@@ -92,17 +99,10 @@ class _MyTableBodyState extends State<MyTableBody> {
       // ),
     );
   }
-
-  void dataByMock(){
-    MockRequest.mockMyTable().then((res){
-        setState(() {
-          this.myTableItem = MyTableItem.fromJson(res);
-        });
-    });
-  }
-
   // 标题组件
   Widget getItemCountTitleWidget(var title, int count) {
+    print("aaaaaaaaaaaaaaaaa");
+    print(title);
     return Container(
       child: Padding(
         padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
@@ -115,6 +115,7 @@ class _MyTableBodyState extends State<MyTableBody> {
   }
   // 横向滚动图片组件(小图)
   Widget getSubScrollImage() {
+
     double _height = 150.0;
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5.0),
