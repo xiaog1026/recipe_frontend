@@ -26,4 +26,10 @@ class MockRequest {
     var responseJson = json.decode(responseStr);
     return responseJson;
   }
+
+  static Future<dynamic> mockMyTable() async {
+    var responseStr = await rootBundle.loadString('mock/my_table.json');
+    var responseJson = json.decode(responseStr);
+    return responseJson;
+  }
 }

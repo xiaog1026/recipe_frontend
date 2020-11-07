@@ -1,17 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:lovekitchen/widgets/item_count_title.dart';
 import 'package:lovekitchen/widgets/top_item_widget.dart';
-import 'package:lovekitchen/models/home_list_model.dart';
-class Category extends StatelessWidget {
-  // 首页组件变量
-  final Cards dishs;
+import 'package:lovekitchen/network/http_request.dart';
+import 'package:lovekitchen/network/mock_request.dart';
+import 'package:lovekitchen/models/my_table_model.dart';
+
+class MyTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text("我的餐桌"),
       ),
+      body: MyTableBody(),
+    );
+  }
+}
+class MyTableBody extends StatefulWidget {
+  @override
+  _MyTableBodyState createState() => _MyTableBodyState();
+}
+
+class _MyTableBodyState extends State<MyTableBody> {
+  // 我的餐桌变量
+  MyTableItem myTableItem;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+  @override
+  Widget build(BuildContext context) {
+    dataByMock();
+
+    return Scaffold(
       body: Container(
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -21,7 +43,7 @@ class Category extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             // 标题显示
-            getItemCountTitleWidget("aaa",5),
+            getItemCountTitleWidget(this.myTableItem.dishTypeName,this.myTableItem.dishCount),
             // 横向滚动组件
             getSubScrollImage(),
             SizedBox(height: 5),
@@ -71,6 +93,14 @@ class Category extends StatelessWidget {
     );
   }
 
+  void dataByMock(){
+    MockRequest.mockMyTable().then((res){
+        setState(() {
+          this.myTableItem = MyTableItem.fromJson(res);
+        });
+    });
+  }
+
   // 标题组件
   Widget getItemCountTitleWidget(var title, int count) {
     return Container(
@@ -83,7 +113,7 @@ class Category extends StatelessWidget {
       ),
     );
   }
-  // 横向滚动图片组件(小图和大图)
+  // 横向滚动图片组件(小图)
   Widget getSubScrollImage() {
     double _height = 150.0;
     return Container(
@@ -92,8 +122,9 @@ class Category extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
-          for (var d in this.dishs.dish)
-            getImageByType(d),
+          for (var d in this.myTableItem.dish)
+               getImageByType(d),
+
         ],
       ),
     );
@@ -105,10 +136,10 @@ class Category extends StatelessWidget {
       child: TopItemWidget(
           title: dish.dishName,
           url: dish.dishImageLink,
-          type: this.dishs.dishType
+          type: this.myTableItem.dishType
       ),
       onTap: () {
-        Router.push(context, Router.detailItemPage, dish.dishId);
+        //Router.push(context, Router.detailItemPage, dish.dishId);
       },
     );
   }

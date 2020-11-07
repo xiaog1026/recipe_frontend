@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lovekitchen/views/add/add.dart';
-import 'package:lovekitchen/views/category/category.dart';
+import 'package:lovekitchen/views/mytable/my_table.dart';
 import 'package:lovekitchen/views/home/home.dart';
 import 'package:lovekitchen/views/profile/profile.dart';
 import 'package:lovekitchen/views/shopping/shopping.dart';
@@ -73,7 +73,7 @@ class MyStackPageState extends State<MyStackPage> {
         index: _currentIndex,
         children: <Widget>[
           Home(),
-          Category(),
+          MyTable(),
           Add(),
           Shopping(),
           Profile()
