@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lovekitchen/widgets/item_count_title.dart';
-import 'package:lovekitchen/widgets/top_item_widget.dart';
-import 'package:lovekitchen/network/http_request.dart';
-import 'package:lovekitchen/network/mock_request.dart';
-import 'package:lovekitchen/models/my_table_model.dart';
+import 'package:recipe_frontend/widgets/item_count_title.dart';
+import 'package:recipe_frontend/widgets/top_item_widget.dart';
+import 'package:recipe_frontend/network/http_request.dart';
+import 'package:recipe_frontend/network/mock_request.dart';
+import 'package:recipe_frontend/models/my_table_model.dart';
 
 class MyTable extends StatelessWidget {
   @override

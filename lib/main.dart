@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lovekitchen/views/add/add.dart';
-import 'package:lovekitchen/views/mytable/my_table.dart';
-import 'package:lovekitchen/views/home/home.dart';
-import 'package:lovekitchen/views/profile/profile.dart';
-import 'package:lovekitchen/views/shopping/shopping.dart';
+import 'package:recipe_frontend/views/add/add.dart';
+import 'package:recipe_frontend/views/mytable/my_table.dart';
+import 'package:recipe_frontend/views/home/home.dart';
+import 'package:recipe_frontend/views/profile/profile.dart';
+import 'package:recipe_frontend/views/shopping/shopping.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "lovekitchen",
+      title: "recipe_frontend",
       theme: ThemeData(
         primaryColor: Colors.green,
         //highlightColor: Colors.transparent,

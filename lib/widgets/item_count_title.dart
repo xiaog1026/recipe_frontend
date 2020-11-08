@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lovekitchen/constant/text_size_constant.dart';
-import 'package:lovekitchen/constant/color_constant.dart';
+import 'package:recipe_frontend/constant/text_size_constant.dart';
+import 'package:recipe_frontend/constant/color_constant.dart';
 
 typedef OnClick = void Function();
 
