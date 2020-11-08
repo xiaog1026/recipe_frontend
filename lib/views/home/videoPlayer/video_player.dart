@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lovekitchen/views/home/videoPlayer/video_player_UI.dart';
-import 'package:lovekitchen/models/home_detail_item_model.dart';
+import 'package:recipe_frontend/views/home/videoPlayer/video_player_UI.dart';
+import 'package:recipe_frontend/models/home_detail_item_model.dart';
 
 class VideoPage extends StatelessWidget {
   static final String routerName = '/VideoPage';

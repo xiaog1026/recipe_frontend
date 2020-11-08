@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:lovekitchen/models/home_list_model.dart';
-import 'package:lovekitchen/components/dashed_line.dart';
-import 'package:lovekitchen/components/star_rating.dart';
-import 'package:lovekitchen/widgets/item_count_title.dart';
-import 'package:lovekitchen/widgets/top_item_widget.dart';
-import 'package:lovekitchen/router.dart';
+import 'package:recipe_frontend/models/home_list_model.dart';
+import 'package:recipe_frontend/components/dashed_line.dart';
+import 'package:recipe_frontend/components/star_rating.dart';
+import 'package:recipe_frontend/widgets/item_count_title.dart';
+import 'package:recipe_frontend/widgets/top_item_widget.dart';
+import 'package:recipe_frontend/router.dart' as r;
 
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -129,7 +129,7 @@ class HomeListPage extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Router.push(context, Router.detailItemPage, this.dishs.dish[index].dishId);
+        r.Router.push(context, r.Router.detailItemPage, this.dishs.dish[index].dishId);
       },
     );
 
@@ -154,7 +154,7 @@ class HomeListPage extends StatelessWidget {
           type: this.dishs.dishType
       ),
       onTap: () {
-        Router.push(context, Router.detailItemPage, dish.dishId);
+        r.Router.push(context, r.Router.detailItemPage, dish.dishId);
       },
     );
   }

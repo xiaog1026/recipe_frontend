@@ -1,20 +1,20 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:lovekitchen/models/home_model.dart';
-import 'package:lovekitchen/components/dashed_line.dart';
-import 'package:lovekitchen/components/star_rating.dart';
-import 'package:lovekitchen/widgets/item_count_title.dart';
-import 'package:lovekitchen/widgets/top_item_widget.dart';
-import 'package:lovekitchen/router.dart';
-import 'package:lovekitchen/widgets/video_item_widget.dart';
-import 'package:lovekitchen/widgets/image_item_widget.dart';
-import 'package:lovekitchen/constant/color_constant.dart';
-import 'package:lovekitchen/constant/text_size_constant.dart';
-import 'package:lovekitchen/models/home_detail_item_model.dart';
-import 'package:lovekitchen/network/mock_request.dart';
-import 'package:lovekitchen/network/http_request.dart';
-import 'package:lovekitchen/network/http_config.dart';
+import 'package:recipe_frontend/models/home_model.dart';
+import 'package:recipe_frontend/components/dashed_line.dart';
+import 'package:recipe_frontend/components/star_rating.dart';
+import 'package:recipe_frontend/widgets/item_count_title.dart';
+import 'package:recipe_frontend/widgets/top_item_widget.dart';
+import 'package:recipe_frontend/router.dart' as rout;
+import 'package:recipe_frontend/widgets/video_item_widget.dart';
+import 'package:recipe_frontend/widgets/image_item_widget.dart';
+import 'package:recipe_frontend/constant/color_constant.dart';
+import 'package:recipe_frontend/constant/text_size_constant.dart';
+import 'package:recipe_frontend/models/home_detail_item_model.dart';
+import 'package:recipe_frontend/network/mock_request.dart';
+import 'package:recipe_frontend/network/http_request.dart';
+import 'package:recipe_frontend/network/http_config.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class DetailItemPage extends StatelessWidget {
@@ -189,7 +189,7 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
             type: "type1"
         ),
         onTap: () {
-          Router.push(context, Router.videoPage, this.homeDetailItem);
+          rout.Router.push(context, rout.Router.videoPage, this.homeDetailItem);
         },
       ),
     );
@@ -310,7 +310,7 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
       onTap: () {
         var paramMap = new Map();
         //paramMap.addAll("",)
-        Router.push(context, Router.viewImg,  comment.image);
+        rout.Router.push(context, rout.Router.viewImg,  comment.image);
       },
     );
   }

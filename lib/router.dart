@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:lovekitchen/views/home/detail_item_page.dart';
-import 'package:lovekitchen/views/home/videoPlayer/video_player.dart';
-import 'package:lovekitchen/views/home/ viewImg/view_img.dart';
+import 'package:recipe_frontend/views/home/detail_item_page.dart';
+import 'package:recipe_frontend/views/home/videoPlayer/video_player.dart';
+import 'package:recipe_frontend/views/home/ viewImg/view_img.dart';
 
 ///https://www.jianshu.com/p/b9d6ec92926f
 

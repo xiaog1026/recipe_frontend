@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:lovekitchen/models/home_model.dart';
-import 'package:lovekitchen/models/home_list_model.dart';
-import 'package:lovekitchen/network/http_request.dart';
-import 'package:lovekitchen/network/mock_request.dart';
-import 'package:lovekitchen/views/home/home_list_page.dart';
+import 'package:recipe_frontend/models/home_model.dart';
+import 'package:recipe_frontend/models/home_list_model.dart';
+import 'package:recipe_frontend/network/http_request.dart';
+import 'package:recipe_frontend/network/mock_request.dart';
+import 'package:recipe_frontend/views/home/home_list_page.dart';
 import 'dart:async';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_easyrefresh/material_header.dart';
 import 'package:flutter_easyrefresh/material_footer.dart';
-import 'package:lovekitchen/network/http_config.dart';
+import 'package:recipe_frontend/network/http_config.dart';
 
 class Home extends StatelessWidget {
   @override

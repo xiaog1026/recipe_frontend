@@ -1,4 +1,4 @@
-# lovekitchen
+# recipe_frontend
 
 A new Flutter application.
 
