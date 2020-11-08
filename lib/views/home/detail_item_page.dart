@@ -6,7 +6,7 @@ import 'package:recipe_frontend/components/dashed_line.dart';
 import 'package:recipe_frontend/components/star_rating.dart';
 import 'package:recipe_frontend/widgets/item_count_title.dart';
 import 'package:recipe_frontend/widgets/top_item_widget.dart';
-import 'package:recipe_frontend/router.dart' as rout;
+import 'package:recipe_frontend/router.dart' as r;
 import 'package:recipe_frontend/widgets/video_item_widget.dart';
 import 'package:recipe_frontend/widgets/image_item_widget.dart';
 import 'package:recipe_frontend/constant/color_constant.dart';
@@ -189,7 +189,7 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
             type: "type1"
         ),
         onTap: () {
-          rout.Router.push(context, rout.Router.videoPage, this.homeDetailItem);
+          r.Router.push(context, r.Router.videoPage, this.homeDetailItem);
         },
       ),
     );
@@ -310,7 +310,7 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
       onTap: () {
         var paramMap = new Map();
         //paramMap.addAll("",)
-        rout.Router.push(context, rout.Router.viewImg,  comment.image);
+        r.Router.push(context, r.Router.viewImg,  comment.image);
       },
     );
   }
