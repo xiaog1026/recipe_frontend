@@ -36,7 +36,7 @@ class HomeListPage extends StatelessWidget {
           getItemCountTitleWidget(this.dishs.dishTypeName,this.dishs.dishCount),
           // 横向滚动组件
           getScrollImage(),
-          SizedBox(height: 5),
+
         ],
       ),
     );

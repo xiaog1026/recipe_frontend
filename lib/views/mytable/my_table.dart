@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:recipe_frontend/widgets/item_count_title.dart';
 import 'package:recipe_frontend/widgets/top_item_widget.dart';
@@ -36,73 +37,56 @@ class _MyTableBodyState extends State<MyTableBody> {
   }
   @override
   Widget build(BuildContext context) {
-    if(this.myTableItem == null){
-      return Scaffold(
-      );
+
+
+    if(this.myTableItem.dishTypeName == null){
+      return Scaffold();
     }
-    return Scaffold(
-      body: Container(
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            border:
-            Border(bottom: BorderSide(width: 10, color: Color(0xffe2e2e2)))),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            // 标题显示
-            //getItemCountTitleWidget(this.myTableItem.dishTypeName,this.myTableItem.dishCount),
-            // 横向滚动组件
-            //getSubScrollImage(),
-            SizedBox(height: 5),
-          ],
-        ),
-      )
-      // Scaffold(
-      //   appBar: AppBar(title: Text("侧边栏菜单")),
-      //   drawer: Drawer(
-      //     child: Column(
-      //       crossAxisAlignment: CrossAxisAlignment.start,
-      //       children: <Widget>[
-      //         Row(
-      //           children: <Widget>[
-      //             Icon(Icons.add),
-      //             Text("菜单一"),
-      //           ],
-      //         ),
-      //         Row(
-      //           children: <Widget>[
-      //             Icon(Icons.edit),
-      //             Text("菜单二"),
-      //           ],
-      //         ),
-      //         Row(
-      //           children: <Widget>[
-      //             Icon(Icons.ac_unit),
-      //             Text("菜单三"),
-      //           ],
-      //         ),
-      //         Row(
-      //           children: <Widget>[
-      //             Icon(Icons.access_alarm),
-      //             Text("菜单四"),
-      //           ],
-      //         ),
-      //         Row(
-      //           children: <Widget>[
-      //             Icon(Icons.add_call),
-      //             Text("菜单五"),
-      //           ],
-      //         ),
-      //       ],
-      //     ),
-      //   ),
-      // ),
+    return Container(
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+          border:
+          Border(bottom: BorderSide(width: 10, color: Color(0xffe2e2e2)))),
+          child:SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                // 每日菜单标题显示
+                getItemCountTitleWidget(this.myTableItem.dishTypeName,this.myTableItem.dishCount),
+                // 横向滚动组件
+                getSubScrollImage(),
+                SizedBox(height: 5),
+                // 我的可用食材标题显示
+                getItemCountTitleWidget(this.myTableItem.ingredentTypeName,this.myTableItem.ingredents.length),
+                getIngredents(),
+                SizedBox(height: 5),
+                // 基础配菜条件标题显示
+                getItemCountTitleWidget(this.myTableItem.sideDishBaseTypeName,this.myTableItem.sideDishBases.length),
+                getSideDishBases(),
+                SizedBox(height: 5),
+                // 选项喜欢吃配菜条件标题显示
+                getItemCountTitleWidget(this.myTableItem.sideDishOptionLikeTypeName,this.myTableItem.sideDishOptionLikes.length),
+                getSideDishOptionLikes(),
+                SizedBox(height: 5),
+                // 选项不喜欢吃配菜条件标题显示
+                getItemCountTitleWidget(this.myTableItem.sideDishOptionHateTypeName,this.myTableItem.sideDishOptionHates.length),
+                getSideDishOptionHates(),
+                SizedBox(height: 5),
+                // 选项口味配菜条件标题显示
+                getItemCountTitleWidget(this.myTableItem.sideDishOptionTasteTypeName,this.myTableItem.sideDishOptionTastes.length),
+                getSideDishOptionTastes(),
+                SizedBox(height: 5),
+              ],
+            ),
+          )
+          ,
     );
   }
   // 标题组件
   Widget getItemCountTitleWidget(var title, int count) {
-    print("aaaaaaaaaaaaaaaaa");
-    print(title);
+    if (title == null){
+      return Container();
+    }
     return Container(
       child: Padding(
         padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
@@ -115,8 +99,10 @@ class _MyTableBodyState extends State<MyTableBody> {
   }
   // 横向滚动图片组件(小图)
   Widget getSubScrollImage() {
-
-    double _height = 150.0;
+    if (this.myTableItem.dishTypeName == null){
+      return Container();
+    }
+    double _height = 120.0;
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5.0),
       height: _height,
@@ -125,7 +111,6 @@ class _MyTableBodyState extends State<MyTableBody> {
         children: <Widget>[
           for (var d in this.myTableItem.dish)
                getImageByType(d),
-
         ],
       ),
     );
@@ -142,6 +127,228 @@ class _MyTableBodyState extends State<MyTableBody> {
       onTap: () {
         //Router.push(context, Router.detailItemPage, dish.dishId);
       },
+    );
+  }
+  //食材列表
+  Widget getIngredents() {
+    return Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(width: 5),
+            // Text(
+            //   '人数',
+            //   style: TextStyle(
+            //     fontSize: 16.0,
+            //     color: Colors.black,
+            //   ),
+            // ),
+            OutlineButton.icon(
+              icon: Icon(Icons.add_shopping_cart),
+              label: Text("添加可用食材"),
+              onPressed: () {
+                setState(() {
+                  //_counter++;
+                });
+              },
+            )
+          ],
+        ),
+        SizedBox(width: 5),
+        //for (var item in this.homeDetailItem.ingredents) Text(item.ingredentName + "  " + item.ingredentWeight),
+        for (var item in this.myTableItem.ingredents)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(width: 5),
+              //Text(item.ingredentName + "  " + (item.ingredentWeight).toString() + item.ingredentUnit)
+              buildSuggestions(item.ingredentName + "  " + (item.ingredentWeight).toString() + item.ingredentUnit)
+            ],
+          )
+      ],
+    );
+  }
+
+  //基础配菜列表
+  Widget getSideDishBases() {
+    return Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(width: 5),
+            OutlineButton.icon(
+              icon: Icon(Icons.edit_location_outlined),
+              label: Text("编辑标准配菜条件"),
+              onPressed: () {
+                setState(() {
+                  //_counter++;
+                });
+              },
+            )
+          ],
+        ),
+        SizedBox(width: 5),
+        //for (var item in this.homeDetailItem.ingredents) Text(item.ingredentName + "  " + item.ingredentWeight),
+        for (var item in this.myTableItem.sideDishBases)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(width: 5),
+              //Text(item.sideDishBaseName + "  " + (item.sideDishBaseNum).toString() + item.sideDishBaseUnit)
+              buildSuggestions(item.sideDishBaseName + "  " + (item.sideDishBaseNum).toString() + item.sideDishBaseUnit)
+            ],
+          )
+      ],
+    );
+  }
+  //选项喜欢吃配菜列表
+  Widget getSideDishOptionLikes() {
+    return Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(width: 5),
+            OutlineButton.icon(
+              icon: Icon(Icons.edit_location_outlined),
+              label: Text("编辑喜欢吃选项配菜条件"),
+              onPressed: () {
+                setState(() {
+                  //_counter++;
+                });
+              },
+            )
+          ],
+        ),
+        SizedBox(width: 5),
+        //for (var item in this.homeDetailItem.ingredents) Text(item.ingredentName + "  " + item.ingredentWeight),
+        for (var item in this.myTableItem.sideDishOptionLikes)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(width: 5),
+              if(item.sideDishOptionLikeStatus == 1 )
+              //Text(item.sideDishOptionLikeName)
+                buildSuggestions(item.sideDishOptionLikeName)
+            ],
+          )
+      ],
+    );
+  }
+  //选项不喜欢吃配菜列表
+  Widget getSideDishOptionHates() {
+    return Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(width: 5),
+            OutlineButton.icon(
+              icon: Icon(Icons.edit_location_outlined),
+              label: Text("编辑不喜欢吃选项配菜条件"),
+              onPressed: () {
+                setState(() {
+                  //_counter++;
+                });
+              },
+            )
+          ],
+        ),
+        SizedBox(width: 5),
+        //for (var item in this.homeDetailItem.ingredents) Text(item.ingredentName + "  " + item.ingredentWeight),
+        for (var item in this.myTableItem.sideDishOptionHates)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(width: 5),
+              if(item.sideDishOptionHateStatus == 1 )
+                //Text(item.sideDishOptionHateName)
+                buildSuggestions(item.sideDishOptionHateName)
+            ],
+          )
+      ],
+    );
+  }
+
+  //选项口味吃配菜列表
+  Widget getSideDishOptionTastes() {
+    return Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(width: 5),
+            OutlineButton.icon(
+              icon: Icon(Icons.edit_location_outlined),
+              label: Text("编辑口味选项配菜条件"),
+              onPressed: () {
+                setState(() {
+                  //_counter++;
+                });
+              },
+            )
+          ],
+        ),
+        SizedBox(width: 5),
+        //for (var item in this.homeDetailItem.ingredents) Text(item.ingredentName + "  " + item.ingredentWeight),
+        for (var item in this.myTableItem.sideDishOptionTastes)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(width: 5),
+              if(item.sideDishOptionTasteStatus == 1 )
+                //Text(item.sideDishOptionTasteName)
+                buildSuggestions(item.sideDishOptionTasteName)
+            ],
+          )
+      ],
+    );
+  }
+
+  /// 搜索建议 调用的话就不能返回null
+  @override
+  Widget buildSuggestions(String name) {
+    return Padding(
+      padding: EdgeInsets.all(1),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          SizedBox(height: 3),
+          Wrap(
+            spacing: 5.0, //两个widget之间横向的间隔
+            direction: Axis.horizontal, //方向
+            alignment: WrapAlignment.start, //内容排序方式
+            children: List<Widget>.generate(
+             1,
+                  (int index) {
+                return ActionChip(
+                  //标签文字
+                  label: Text(
+                    name,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
+                  ),
+                  //点击事件
+                  onPressed: () async {
+
+                  },
+                  elevation: 3,
+                  backgroundColor: Color.fromARGB(
+                    180,
+                    Random().nextInt(255),
+                    Random().nextInt(255),
+                    Random().nextInt(255),
+                  ),
+                );
+              },
+            ).toList(),
+          ),
+        ],
+      ),
     );
   }
 

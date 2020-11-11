@@ -28,5 +28,137 @@
       "dish_name": "橘丁香菇肉酱",
       "dish_image_link": "https://cp1.douguo.com/upload/caiku/6/7/e/690x390_67b273dce8630b9e0718fd51762c862e.jpg"
     }
+  ],
+  "ingredent_type_name": "我的可用的主要食材",
+  "ingredents": [
+    {
+      "ingredent_name": "小龙虾",
+      "ingredent_weight": 1,
+      "ingredent_unit": "kg"
+    },
+    {
+      "ingredent_name": "干辣椒",
+      "ingredent_weight": 20,
+      "ingredent_unit": "克"
+    },
+    {
+      "ingredent_name": "花椒",
+      "ingredent_weight": 6,
+      "ingredent_unit": "克"
+    },
+    {
+      "ingredent_name": "姜片",
+      "ingredent_weight": 5,
+      "ingredent_unit": "片"
+    },
+    {
+      "ingredent_name": "桂皮",
+      "ingredent_weight": 1,
+      "ingredent_unit": "根"
+    },
+    {
+      "ingredent_name": "蒜瓣",
+      "ingredent_weight": 10,
+      "ingredent_unit": "片"
+    }
+  ],
+  "side_dish_base_type_name": "标准配菜条件",
+  "side_dish_bases": [
+    {
+      "side_dish_base_name": "牙口不好的人数",
+      "side_dish_base_num": 1,
+      "side_dish_base_unit": "人"
+    },
+    {
+      "side_dish_base_name": "小孩人数",
+      "side_dish_base_num": 2,
+      "side_dish_base_unit": "人"
+    },
+    {
+      "side_dish_base_name": "推荐菜数",
+      "side_dish_base_num": 3,
+      "side_dish_base_unit": "个"
+    },
+    {
+      "side_dish_base_name": "吃饭人数",
+      "side_dish_base_num": 4,
+      "side_dish_base_unit": "人"
+    },
+    {
+      "side_dish_base_name": "做饭时间",
+      "side_dish_base_num": 30,
+      "side_dish_base_unit": "分钟"
+    },
+    {
+      "side_dish_base_name": "价格限制",
+      "side_dish_base_num": 100,
+      "side_dish_base_unit": "元"
+    }
+  ],
+  "side_dish_option_type_name": "选项配菜条件",
+  "side_dish_option_like_type_name": "想吃",
+  "side_dish_option_likes": [
+    {
+      "side_dish_option_like_name": "肉",
+      "side_dish_option_like_status": 1
+    },
+    {
+      "side_dish_option_like_name": "海鲜",
+      "side_dish_option_like_status": 0
+    },
+    {
+      "side_dish_option_like_name": "豆类",
+      "side_dish_option_like_status": 1
+    },
+    {
+      "side_dish_option_like_name": "乳类",
+      "side_dish_option_like_status": 0
+    },
+    {
+      "side_dish_option_like_name": "蛋类",
+      "side_dish_option_like_status": 0
+    }
+  ],
+  "side_dish_option_hate_type_name": "不想吃",
+  "side_dish_option_hates": [
+    {
+      "side_dish_option_hate_name": "肉",
+      "side_dish_option_hate_status": 0
+    },
+    {
+      "side_dish_option_hate_name": "海鲜",
+      "side_dish_option_hate_status": 0
+    },
+    {
+      "side_dish_option_hate_name": "豆类",
+      "side_dish_option_hate_status": 0
+    },
+    {
+      "side_dish_option_hate_name": "乳类",
+      "side_dish_option_hate_status": 0
+    },
+    {
+      "side_dish_option_hate_name": "蛋类",
+      "side_dish_option_hate_status": 1
+    }
+  ],
+  "side_dish_option_taste_type_name": "口味",
+  "side_dish_option_tastes": [
+    {
+      "side_dish_option_taste_name": "甜",
+      "side_dish_option_taste_status": 0
+    },
+    {
+      "side_dish_option_taste_name": "酸",
+      "side_dish_option_taste_status": 1
+    },
+    {
+      "side_dish_option_taste_name": "辣",
+      "side_dish_option_taste_status": 0
+    },
+    {
+      "side_dish_option_taste_name": "苦",
+      "side_dish_option_taste_status": 0
+    }
   ]
 }
