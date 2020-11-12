@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:recipe_frontend/views/home/detail_item_page.dart';
 import 'package:recipe_frontend/views/home/videoPlayer/video_player.dart';
 import 'package:recipe_frontend/views/home/ viewImg/view_img.dart';
+import 'package:recipe_frontend/views/mytable/ingredent_navi.dart';
+import 'package:recipe_frontend/views/mytable/side_dish_navi.dart';
 
 ///https://www.jianshu.com/p/b9d6ec92926f
 
@@ -12,6 +14,9 @@ class Router {
   static const detailItemPage = 'app://DetailItemPage';
   static const videoPage = 'app://VideoPage';
   static const viewImg = 'app://ViewImg';
+  static const ingredentNaviPage = 'app://NaviPage';
+  static const sideDishNaviPage = 'app://SideDishNaviPage';
+
 
 
   static const playListPage = 'app://VideosPlayPage';
@@ -35,6 +40,10 @@ class Router {
           return DetailItemPage(params);
         case videoPage:
           return VideoPage(params);
+        case ingredentNaviPage:
+          return NaviPage();
+        case sideDishNaviPage:
+          return SideDishNaviPage();
         case viewImg:
           //return ViewImg(pimg:params['img'],pimgs:params['imgs'],pwidth:params['width']);
           return ViewImg();

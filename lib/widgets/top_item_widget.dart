@@ -56,7 +56,7 @@ class TopItemWidget extends StatelessWidget {
               imageUrl: url,
             ),
             Positioned(
-              top: _imgSize / 2 + 40.0,
+              top: _imgSize / 2 + 30.0,
               left: 1.0,
               child: Text(
                 title,

@@ -32,4 +32,17 @@ class MockRequest {
     var responseJson = json.decode(responseStr);
     return responseJson;
   }
+
+  static Future<dynamic> mockIngredent() async {
+    var responseStr = await rootBundle.loadString('mock/ingredent_navi.json');
+    // responseJson = json.decode(responseStr);
+    return responseStr;
+  }
+  static Future<dynamic> mockSideDish() async {
+    var responseStr = await rootBundle.loadString('mock/side_dish_navi.json');
+    // responseJson = json.decode(responseStr);
+    return responseStr;
+  }
+
+
 }
