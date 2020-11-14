@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "dish_type": "smallImage",
+      "dish_type_id": "1",
       "dish_type_name": "牛肉料理",
       "dish": [
         {
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "dish_type": "smallImage",
+      "dish_type_id": "2",
       "dish_type_name": "土豆料理2",
       "dish": [
         {
@@ -63,7 +63,7 @@
       ]
     },
     {
-      "dish_type": "smallImage",
+      "dish_type_id": "3",
       "dish_type_name": "海鲜料理3",
       "dish": [
         {

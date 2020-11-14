@@ -22,14 +22,14 @@ class MoreDishModel {
 }
 
 class Data {
-  String dishType;
+  String dishTypeId;
   String dishTypeName;
   List<Dish> dish;
 
-  Data({this.dishType, this.dishTypeName, this.dish});
+  Data({this.dishTypeId, this.dishTypeName, this.dish});
 
   Data.fromJson(Map<String, dynamic> json) {
-    dishType = json['dish_type'];
+    dishTypeId = json['dish_type_id'];
     dishTypeName = json['dish_type_name'];
     if (json['dish'] != null) {
       dish = new List<Dish>();
@@ -41,7 +41,7 @@ class Data {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['dish_type'] = this.dishType;
+    data['dish_type_id'] = this.dishTypeId;
     data['dish_type_name'] = this.dishTypeName;
     if (this.dish != null) {
       data['dish'] = this.dish.map((v) => v.toJson()).toList();
