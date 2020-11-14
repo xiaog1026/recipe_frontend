@@ -38,7 +38,9 @@ class ItemTitle extends StatelessWidget {
         ],
       ),
       onTap: () {
-        r.Router.push(context, url,null);
+        if (url != null) {
+          r.Router.push(context, url,null);
+        }
         // if (onClick != null) {
         //   //onClick();
         //   r.Router.push(context, r.Router.ingredentNaviPage,null);

@@ -53,7 +53,7 @@ class _MyTableBodyState extends State<MyTableBody> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 // 每日菜单标题显示
-                getItemCountTitleWidget(this.myTableItem.dishTypeName,this.myTableItem.dishCount),
+                getItemCountTitleWidget(this.myTableItem.dishTypeName,r.Router.moreDishPage),
                 // 横向滚动组件
                 getSubScrollImage(),
                 SizedBox(height: 5),
@@ -127,7 +127,7 @@ class _MyTableBodyState extends State<MyTableBody> {
           type: this.myTableItem.dishType
       ),
       onTap: () {
-        //Router.push(context, Router.detailItemPage, dish.dishId);
+        r.Router.push(context, r.Router.detailItemPage, dish.dishId);
       },
     );
   }

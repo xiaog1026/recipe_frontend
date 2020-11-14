@@ -5,6 +5,7 @@ import 'package:recipe_frontend/views/home/videoPlayer/video_player.dart';
 import 'package:recipe_frontend/views/home/ viewImg/view_img.dart';
 import 'package:recipe_frontend/views/mytable/ingredent_navi.dart';
 import 'package:recipe_frontend/views/mytable/side_dish_navi.dart';
+import 'package:recipe_frontend/views/mytable/more_dish.dart';
 
 ///https://www.jianshu.com/p/b9d6ec92926f
 
@@ -16,6 +17,7 @@ class Router {
   static const viewImg = 'app://ViewImg';
   static const ingredentNaviPage = 'app://NaviPage';
   static const sideDishNaviPage = 'app://SideDishNaviPage';
+  static const moreDishPage = 'app://MoreDishPage';
 
 
 
@@ -44,6 +46,8 @@ class Router {
           return NaviPage();
         case sideDishNaviPage:
           return SideDishNaviPage();
+        case moreDishPage:
+          return MoreDishPage();
         case viewImg:
           //return ViewImg(pimg:params['img'],pimgs:params['imgs'],pwidth:params['width']);
           return ViewImg();

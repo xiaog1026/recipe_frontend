@@ -44,5 +44,11 @@ class MockRequest {
     return responseStr;
   }
 
+  static Future<dynamic> mockMoreDish() async {
+    var responseStr = await rootBundle.loadString('mock/more_dish.json');
+    //var responseJson = json.decode(responseStr);
+    return responseStr;
+  }
+
 
 }

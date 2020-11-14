@@ -119,6 +119,7 @@ class _SideDishNaviPageBodyState extends State<SideDishNaviPageBody> {
   }
 
   Widget getChip(int i) {
+    var color = Colors.grey.shade200;
     //更新对应下标数据
     _updateArticles(i);
     return Wrap(
@@ -134,6 +135,11 @@ class _SideDishNaviPageBodyState extends State<SideDishNaviPageBody> {
                 style: TextStyle(fontSize: 16, color: ColorConstant.color_666)),
             //点击事件
             onPressed: () {
+              print(color);
+              setState(() {
+                color = Colors.blue.shade200;
+              });
+
               // Navigator.push(
               //   context,
               //   new MaterialPageRoute(
@@ -143,7 +149,7 @@ class _SideDishNaviPageBodyState extends State<SideDishNaviPageBody> {
               // );
             },
             elevation: 3,
-            backgroundColor: Colors.grey.shade200,
+            backgroundColor: Colors.blue.shade200,
           );
         },
       ).toList(),
