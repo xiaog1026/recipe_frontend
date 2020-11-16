@@ -1,164 +1,98 @@
 {
-  "dish_type": "smallImage",
-  "dish_type_name": "每日菜单",
-  "dish_count": 5,
-  "dish": [
-    {
-      "dish_id": 7,
-      "dish_name": "宝宝辅食-丁香鱼奶酪厚蛋烧",
-      "dish_image_link": "https://cp1.douguo.com/upload/caiku/8/c/e/690x390_8c741dda37318a0a0a512580e79380ae.jpg"
-    },
-    {
-      "dish_id": 34,
-      "dish_name": "酱香鱼",
-      "dish_image_link": "https://cp1.douguo.com/upload/caiku/7/f/1/690x390_7ffdcdc69ca3831914b62fde3d863de1.jpg"
-    },
-    {
-      "dish_id": 62,
-      "dish_name": "蒜香鱼排",
-      "dish_image_link": "https://cp1.douguo.com/upload/caiku/d/5/8/690x390_d5ce72049254de1c0f8e826f43fdd698.jpg"
-    },
-    {
-      "dish_id": 76,
-      "dish_name": "醋香鱼块",
-      "dish_image_link": "https://cp1.douguo.com/upload/caiku/e/b/d/690x390_eb9dd4e76714351da7ae71573fb2094d.jpg"
-    },
-    {
-      "dish_id": 147,
-      "dish_name": "橘丁香菇肉酱",
-      "dish_image_link": "https://cp1.douguo.com/upload/caiku/6/7/e/690x390_67b273dce8630b9e0718fd51762c862e.jpg"
-    }
-  ],
-  "ingredent_type_name": "我的可用的主要食材",
-  "ingredents": [
-    {
-      "ingredent_name": "小龙虾",
-      "ingredent_weight": 1,
-      "ingredent_unit": "kg"
-    },
-    {
-      "ingredent_name": "干辣椒",
-      "ingredent_weight": 20,
-      "ingredent_unit": "克"
-    },
-    {
-      "ingredent_name": "花椒",
-      "ingredent_weight": 6,
-      "ingredent_unit": "克"
-    },
-    {
-      "ingredent_name": "姜片",
-      "ingredent_weight": 5,
-      "ingredent_unit": "片"
-    },
-    {
-      "ingredent_name": "桂皮",
-      "ingredent_weight": 1,
-      "ingredent_unit": "根"
-    },
-    {
-      "ingredent_name": "蒜瓣",
-      "ingredent_weight": 10,
-      "ingredent_unit": "片"
-    }
-  ],
-  "side_dish_base_type_name": "标准配菜条件",
-  "side_dish_bases": [
-    {
-      "side_dish_base_name": "牙口不好的人数",
-      "side_dish_base_num": 1,
-      "side_dish_base_unit": "人"
-    },
-    {
-      "side_dish_base_name": "小孩人数",
-      "side_dish_base_num": 2,
-      "side_dish_base_unit": "人"
-    },
-    {
-      "side_dish_base_name": "推荐菜数",
-      "side_dish_base_num": 3,
-      "side_dish_base_unit": "个"
-    },
-    {
-      "side_dish_base_name": "吃饭人数",
-      "side_dish_base_num": 4,
-      "side_dish_base_unit": "人"
-    },
-    {
-      "side_dish_base_name": "做饭时间",
-      "side_dish_base_num": 30,
-      "side_dish_base_unit": "分钟"
-    },
-    {
-      "side_dish_base_name": "价格限制",
-      "side_dish_base_num": 100,
-      "side_dish_base_unit": "元"
-    }
-  ],
-  "side_dish_option_type_name": "选项配菜条件",
-  "side_dish_option_like_type_name": "想吃",
-  "side_dish_option_likes": [
-    {
-      "side_dish_option_like_name": "肉",
-      "side_dish_option_like_status": 1
-    },
-    {
-      "side_dish_option_like_name": "海鲜",
-      "side_dish_option_like_status": 0
-    },
-    {
-      "side_dish_option_like_name": "豆类",
-      "side_dish_option_like_status": 1
-    },
-    {
-      "side_dish_option_like_name": "乳类",
-      "side_dish_option_like_status": 0
-    },
-    {
-      "side_dish_option_like_name": "蛋类",
-      "side_dish_option_like_status": 0
-    }
-  ],
-  "side_dish_option_hate_type_name": "不想吃",
-  "side_dish_option_hates": [
-    {
-      "side_dish_option_hate_name": "肉",
-      "side_dish_option_hate_status": 0
-    },
-    {
-      "side_dish_option_hate_name": "海鲜",
-      "side_dish_option_hate_status": 0
-    },
-    {
-      "side_dish_option_hate_name": "豆类",
-      "side_dish_option_hate_status": 0
-    },
-    {
-      "side_dish_option_hate_name": "乳类",
-      "side_dish_option_hate_status": 0
-    },
-    {
-      "side_dish_option_hate_name": "蛋类",
-      "side_dish_option_hate_status": 1
-    }
-  ],
-  "side_dish_option_taste_type_name": "口味",
-  "side_dish_option_tastes": [
-    {
-      "side_dish_option_taste_name": "甜",
-      "side_dish_option_taste_status": 0
-    },
-    {
-      "side_dish_option_taste_name": "酸",
-      "side_dish_option_taste_status": 1
-    },
-    {
-      "side_dish_option_taste_name": "辣",
-      "side_dish_option_taste_status": 0
-    },
-    {
-      "side_dish_option_taste_name": "苦",
-      "side_dish_option_taste_status": 0
-    }
-  ]
+  "user_id": 23,
+  "current_recommendation": {
+    "dish_count": 5,
+    "dish": [
+      {
+        "dish_id": 50761,
+        "dish_name": "\u9ed1\u9c7c\u80e1\u841d\u535c\u9762",
+        "dish_image_link": "https://cp1.douguo.com/upload/caiku/b/0/f/690x390_b0740d486a6e955966e0a344595427cf.jpg",
+        "tag_id": "\u9762\u6761\u673a",
+        "tag_name": null
+      },
+      {
+        "dish_id": 29059,
+        "dish_name": "\u516b\u5b9d\u8fa3\u9171\u7cbd\u5b50",
+        "dish_image_link": "https://cp1.douguo.com/upload/caiku/9/a/0/690x390_9a4ab208712ba3e904d0175944c18eb0.jpg",
+        "tag_id": "\u7aef\u5348\u8282",
+        "tag_name": null
+      },
+      {
+        "dish_id": 8571,
+        "dish_name": "\u732a\u5c3e\u5df4\u7096\u6bcd\u9c7f\u9c7c\u5e72\uff0c\u8865\u8170\u690e",
+        "dish_image_link": "https://cp1.douguo.com/upload/caiku/f/4/f/690x390_f459d57173544ac9b24c1a40a9bbb0ff.jpg",
+        "tag_id": "\u70ed\u83dc",
+        "tag_name": null
+      },
+      {
+        "dish_id": 41908,
+        "dish_name": "\u9999\u714e\u58a8\u9c7c\u997c",
+        "dish_image_link": "https://cp1.douguo.com/upload/caiku/0/5/8/690x390_052ead0de82f01f9bec81997f41545e8.jpg",
+        "tag_id": "\u714e\u997c",
+        "tag_name": null
+      },
+      {
+        "dish_id": 37981,
+        "dish_name": "\u9c9c\u9999\u5165\u5473\u3010\u9999\u83c7\u9752\u83dc\u3011",
+        "dish_image_link": "https://cp1.douguo.com/upload/caiku/3/5/0/690x390_351e824f8f4283f36ede5f690b10dab0.jpg",
+        "tag_id": "\u5256\u8179\u4ea7(\u975e\u6bcd\u4e73)1-7\u5929",
+        "tag_name": null
+      }
+    ]
+  },
+  "current_recommend_condition_summary": {
+    "valid_ingredents": [
+      {
+        "condition_name": "\u9700\u8981\u9910\u6570",
+        "condition_code": 4,
+        "condition_value": 5.0
+      },
+      {
+        "condition_name": "\u9700\u8981\u9910\u6570",
+        "condition_code": 4,
+        "condition_value": 6.0
+      }
+    ],
+    "n_person_with_bad_teeth": [      {
+      "condition_name": "\u9700\u8981\u9910\u6570",
+      "condition_code": 4,
+      "condition_value": 5.0
+    }],
+    "n_kids": [],
+    "n_dishs": [
+      {
+        "condition_name": "\u9700\u8981\u9910\u6570",
+        "condition_code": 4,
+        "condition_value": 5.0
+      }
+    ],
+    "n_person": [      {
+      "condition_name": "\u9700\u8981\u9910\u6570",
+      "condition_code": 4,
+      "condition_value": 5.0
+    }],
+    "cooking_time": [      {
+      "condition_name": "\u9700\u8981\u9910\u6570",
+      "condition_code": 4,
+      "condition_value": 5.0
+    }],
+    "cost": [],
+    "favorite_ingredients": [      {
+      "condition_name": "\u9700\u8981\u9910\u6570",
+      "condition_code": 4,
+      "condition_value": 5.0
+    }],
+    "unlike_ingredients": [],
+    "favorite_flavor": [      {
+      "condition_name": "\u9700\u8981\u9910\u6570",
+      "condition_code": 4,
+      "condition_value": 5.0
+    }],
+    "cooking_method": [],
+    "medical_history": [      {
+      "condition_name": "\u9700\u8981\u9910\u6570",
+      "condition_code": 4,
+      "condition_value": 5.0
+    }]
+  }
 }

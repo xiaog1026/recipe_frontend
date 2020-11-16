@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_frontend/constant/text_size_constant.dart';
+import 'package:recipe_frontend/constant/str_constant.dart';
 import 'package:recipe_frontend/constant/color_constant.dart';
 import 'package:recipe_frontend/router.dart' as r;
 
@@ -25,7 +25,7 @@ class ItemTitle extends StatelessWidget {
             title,
             style: TextStyle(
                 fontSize: fontSize == null
-                    ? TextSizeConstant.BookAudioPartTabBar
+                    ? StrConstant.BookAudioPartTabBar
                     : fontSize,
                 fontWeight: FontWeight.bold,
                 color: ColorConstant.colorDefaultTitle),

@@ -1,40 +1,46 @@
 class MyTableItem {
-  String dishType;
-  String dishTypeName;
-  int dishCount;
-  List<Dish> dish;
-  String ingredentTypeName;
-  List<Ingredents> ingredents;
-  String sideDishBaseTypeName;
-  List<SideDishBases> sideDishBases;
-  String sideDishOptionTypeName;
-  String sideDishOptionLikeTypeName;
-  List<SideDishOptionLikes> sideDishOptionLikes;
-  String sideDishOptionHateTypeName;
-  List<SideDishOptionHates> sideDishOptionHates;
-  String sideDishOptionTasteTypeName;
-  List<SideDishOptionTastes> sideDishOptionTastes;
+  int userId;
+  CurrentRecommendation currentRecommendation;
+  CurrentRecommendConditionSummary currentRecommendConditionSummary;
 
   MyTableItem(
-      {this.dishType,
-        this.dishTypeName,
-        this.dishCount,
-        this.dish,
-        this.ingredentTypeName,
-        this.ingredents,
-        this.sideDishBaseTypeName,
-        this.sideDishBases,
-        this.sideDishOptionTypeName,
-        this.sideDishOptionLikeTypeName,
-        this.sideDishOptionLikes,
-        this.sideDishOptionHateTypeName,
-        this.sideDishOptionHates,
-        this.sideDishOptionTasteTypeName,
-        this.sideDishOptionTastes});
+      {this.userId,
+        this.currentRecommendation,
+        this.currentRecommendConditionSummary});
 
   MyTableItem.fromJson(Map<String, dynamic> json) {
-    dishType = json['dish_type'];
-    dishTypeName = json['dish_type_name'];
+    userId = json['user_id'];
+    currentRecommendation = json['current_recommendation'] != null
+        ? new CurrentRecommendation.fromJson(json['current_recommendation'])
+        : null;
+    currentRecommendConditionSummary =
+    json['current_recommend_condition_summary'] != null
+        ? new CurrentRecommendConditionSummary.fromJson(
+        json['current_recommend_condition_summary'])
+        : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['user_id'] = this.userId;
+    if (this.currentRecommendation != null) {
+      data['current_recommendation'] = this.currentRecommendation.toJson();
+    }
+    if (this.currentRecommendConditionSummary != null) {
+      data['current_recommend_condition_summary'] =
+          this.currentRecommendConditionSummary.toJson();
+    }
+    return data;
+  }
+}
+
+class CurrentRecommendation {
+  int dishCount;
+  List<Dish> dish;
+
+  CurrentRecommendation({this.dishCount, this.dish});
+
+  CurrentRecommendation.fromJson(Map<String, dynamic> json) {
     dishCount = json['dish_count'];
     if (json['dish'] != null) {
       dish = new List<Dish>();
@@ -42,76 +48,13 @@ class MyTableItem {
         dish.add(new Dish.fromJson(v));
       });
     }
-    ingredentTypeName = json['ingredent_type_name'];
-    if (json['ingredents'] != null) {
-      ingredents = new List<Ingredents>();
-      json['ingredents'].forEach((v) {
-        ingredents.add(new Ingredents.fromJson(v));
-      });
-    }
-    sideDishBaseTypeName = json['side_dish_base_type_name'];
-    if (json['side_dish_bases'] != null) {
-      sideDishBases = new List<SideDishBases>();
-      json['side_dish_bases'].forEach((v) {
-        sideDishBases.add(new SideDishBases.fromJson(v));
-      });
-    }
-    sideDishOptionTypeName = json['side_dish_option_type_name'];
-    sideDishOptionLikeTypeName = json['side_dish_option_like_type_name'];
-    if (json['side_dish_option_likes'] != null) {
-      sideDishOptionLikes = new List<SideDishOptionLikes>();
-      json['side_dish_option_likes'].forEach((v) {
-        sideDishOptionLikes.add(new SideDishOptionLikes.fromJson(v));
-      });
-    }
-    sideDishOptionHateTypeName = json['side_dish_option_hate_type_name'];
-    if (json['side_dish_option_hates'] != null) {
-      sideDishOptionHates = new List<SideDishOptionHates>();
-      json['side_dish_option_hates'].forEach((v) {
-        sideDishOptionHates.add(new SideDishOptionHates.fromJson(v));
-      });
-    }
-    sideDishOptionTasteTypeName = json['side_dish_option_taste_type_name'];
-    if (json['side_dish_option_tastes'] != null) {
-      sideDishOptionTastes = new List<SideDishOptionTastes>();
-      json['side_dish_option_tastes'].forEach((v) {
-        sideDishOptionTastes.add(new SideDishOptionTastes.fromJson(v));
-      });
-    }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['dish_type'] = this.dishType;
-    data['dish_type_name'] = this.dishTypeName;
     data['dish_count'] = this.dishCount;
     if (this.dish != null) {
       data['dish'] = this.dish.map((v) => v.toJson()).toList();
-    }
-    data['ingredent_type_name'] = this.ingredentTypeName;
-    if (this.ingredents != null) {
-      data['ingredents'] = this.ingredents.map((v) => v.toJson()).toList();
-    }
-    data['side_dish_base_type_name'] = this.sideDishBaseTypeName;
-    if (this.sideDishBases != null) {
-      data['side_dish_bases'] =
-          this.sideDishBases.map((v) => v.toJson()).toList();
-    }
-    data['side_dish_option_type_name'] = this.sideDishOptionTypeName;
-    data['side_dish_option_like_type_name'] = this.sideDishOptionLikeTypeName;
-    if (this.sideDishOptionLikes != null) {
-      data['side_dish_option_likes'] =
-          this.sideDishOptionLikes.map((v) => v.toJson()).toList();
-    }
-    data['side_dish_option_hate_type_name'] = this.sideDishOptionHateTypeName;
-    if (this.sideDishOptionHates != null) {
-      data['side_dish_option_hates'] =
-          this.sideDishOptionHates.map((v) => v.toJson()).toList();
-    }
-    data['side_dish_option_taste_type_name'] = this.sideDishOptionTasteTypeName;
-    if (this.sideDishOptionTastes != null) {
-      data['side_dish_option_tastes'] =
-          this.sideDishOptionTastes.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -121,13 +64,22 @@ class Dish {
   int dishId;
   String dishName;
   String dishImageLink;
+  String tagId;
+  String tagName;
 
-  Dish({this.dishId, this.dishName, this.dishImageLink});
+  Dish(
+      {this.dishId,
+        this.dishName,
+        this.dishImageLink,
+        this.tagId,
+        this.tagName});
 
   Dish.fromJson(Map<String, dynamic> json) {
     dishId = json['dish_id'];
     dishName = json['dish_name'];
     dishImageLink = json['dish_image_link'];
+    tagId = json['tag_id'];
+    tagName = json['tag_name'];
   }
 
   Map<String, dynamic> toJson() {
@@ -135,111 +87,183 @@ class Dish {
     data['dish_id'] = this.dishId;
     data['dish_name'] = this.dishName;
     data['dish_image_link'] = this.dishImageLink;
+    data['tag_id'] = this.tagId;
+    data['tag_name'] = this.tagName;
     return data;
   }
 }
 
-class Ingredents {
-  String ingredentName;
-  int ingredentWeight;
-  String ingredentUnit;
+class CurrentRecommendConditionSummary {
+  List<Condition> validIngredents;
+  List<Condition> nPersonWithBadTeeth;
+  List<Condition> nKids;
+  List<Condition> nDishs;
+  List<Condition> nPerson;
+  List<Condition> cookingTime;
+  List<Condition> cost;
+  List<Condition> favoriteIngredients;
+  List<Condition> unlikeIngredients;
+  List<Condition> favoriteFlavor;
+  List<Condition> cookingMethod;
+  List<Condition> medicalHistory;
 
-  Ingredents({this.ingredentName, this.ingredentWeight, this.ingredentUnit});
+  CurrentRecommendConditionSummary(
+      {this.validIngredents,
+        this.nPersonWithBadTeeth,
+        this.nKids,
+        this.nDishs,
+        this.nPerson,
+        this.cookingTime,
+        this.cost,
+        this.favoriteIngredients,
+        this.unlikeIngredients,
+        this.favoriteFlavor,
+        this.cookingMethod,
+        this.medicalHistory});
 
-  Ingredents.fromJson(Map<String, dynamic> json) {
-    ingredentName = json['ingredent_name'];
-    ingredentWeight = json['ingredent_weight'];
-    ingredentUnit = json['ingredent_unit'];
+  CurrentRecommendConditionSummary.fromJson(Map<String, dynamic> json) {
+    if (json['valid_ingredents'] != null) {
+      validIngredents = new List<Condition>();
+      json['valid_ingredents'].forEach((v) {
+        validIngredents.add(new Condition.fromJson(v));
+      });
+    }
+    if (json['n_person_with_bad_teeth'] != null) {
+      nPersonWithBadTeeth = new List<Condition>();
+      json['n_person_with_bad_teeth'].forEach((v) {
+        nPersonWithBadTeeth.add(new Condition.fromJson(v));
+      });
+    }
+    if (json['n_kids'] != null) {
+      nKids = new List<Condition>();
+      json['n_kids'].forEach((v) {
+        nKids.add(new Condition.fromJson(v));
+      });
+    }
+    if (json['n_dishs'] != null) {
+      nDishs = new List<Condition>();
+      json['n_dishs'].forEach((v) {
+        nDishs.add(new Condition.fromJson(v));
+      });
+    }
+    if (json['n_person'] != null) {
+      nPerson = new List<Condition>();
+      json['n_person'].forEach((v) {
+        nPerson.add(new Condition.fromJson(v));
+      });
+    }
+    if (json['cooking_time'] != null) {
+      cookingTime = new List<Condition>();
+      json['cooking_time'].forEach((v) {
+        cookingTime.add(new Condition.fromJson(v));
+      });
+    }
+    if (json['cost'] != null) {
+      cost = new List<Condition>();
+      json['cost'].forEach((v) {
+        cost.add(new Condition.fromJson(v));
+      });
+    }
+    if (json['favorite_ingredients'] != null) {
+      favoriteIngredients = new List<Condition>();
+      json['favorite_ingredients'].forEach((v) {
+        favoriteIngredients.add(new Condition.fromJson(v));
+      });
+    }
+    if (json['unlike_ingredients'] != null) {
+      unlikeIngredients = new List<Condition>();
+      json['unlike_ingredients'].forEach((v) {
+        unlikeIngredients.add(new Condition.fromJson(v));
+      });
+    }
+    if (json['favorite_flavor'] != null) {
+      favoriteFlavor = new List<Condition>();
+      json['favorite_flavor'].forEach((v) {
+        favoriteFlavor.add(new Condition.fromJson(v));
+      });
+    }
+    if (json['cooking_method'] != null) {
+      cookingMethod = new List<Condition>();
+      json['cooking_method'].forEach((v) {
+        cookingMethod.add(new Condition.fromJson(v));
+      });
+    }
+    if (json['medical_history'] != null) {
+      medicalHistory = new List<Condition>();
+      json['medical_history'].forEach((v) {
+        medicalHistory.add(new Condition.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['ingredent_name'] = this.ingredentName;
-    data['ingredent_weight'] = this.ingredentWeight;
-    data['ingredent_unit'] = this.ingredentUnit;
+    if (this.validIngredents != null) {
+      data['valid_ingredents'] =
+          this.validIngredents.map((v) => v.toJson()).toList();
+    }
+    if (this.nPersonWithBadTeeth != null) {
+      data['n_person_with_bad_teeth'] =
+          this.nPersonWithBadTeeth.map((v) => v.toJson()).toList();
+    }
+    if (this.nKids != null) {
+      data['n_kids'] = this.nKids.map((v) => v.toJson()).toList();
+    }
+    if (this.nDishs != null) {
+      data['n_dishs'] = this.nDishs.map((v) => v.toJson()).toList();
+    }
+    if (this.nPerson != null) {
+      data['n_person'] = this.nPerson.map((v) => v.toJson()).toList();
+    }
+    if (this.cookingTime != null) {
+      data['cooking_time'] = this.cookingTime.map((v) => v.toJson()).toList();
+    }
+    if (this.cost != null) {
+      data['cost'] = this.cost.map((v) => v.toJson()).toList();
+    }
+    if (this.favoriteIngredients != null) {
+      data['favorite_ingredients'] =
+          this.favoriteIngredients.map((v) => v.toJson()).toList();
+    }
+    if (this.unlikeIngredients != null) {
+      data['unlike_ingredients'] =
+          this.unlikeIngredients.map((v) => v.toJson()).toList();
+    }
+    if (this.favoriteFlavor != null) {
+      data['favorite_flavor'] =
+          this.favoriteFlavor.map((v) => v.toJson()).toList();
+    }
+    if (this.cookingMethod != null) {
+      data['cooking_method'] =
+          this.cookingMethod.map((v) => v.toJson()).toList();
+    }
+    if (this.medicalHistory != null) {
+      data['medical_history'] =
+          this.medicalHistory.map((v) => v.toJson()).toList();
+    }
     return data;
   }
 }
 
-class SideDishBases {
-  String sideDishBaseName;
-  int sideDishBaseNum;
-  String sideDishBaseUnit;
+class Condition {
+  String conditionName;
+  int conditionCode;
+  double conditionValue;
 
-  SideDishBases(
-      {this.sideDishBaseName, this.sideDishBaseNum, this.sideDishBaseUnit});
+  Condition(
+      {this.conditionName, this.conditionCode, this.conditionValue});
 
-  SideDishBases.fromJson(Map<String, dynamic> json) {
-    sideDishBaseName = json['side_dish_base_name'];
-    sideDishBaseNum = json['side_dish_base_num'];
-    sideDishBaseUnit = json['side_dish_base_unit'];
+  Condition.fromJson(Map<String, dynamic> json) {
+    conditionName = json['condition_name'];
+    conditionCode = json['condition_code'];
+    conditionValue = json['condition_value'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['side_dish_base_name'] = this.sideDishBaseName;
-    data['side_dish_base_num'] = this.sideDishBaseNum;
-    data['side_dish_base_unit'] = this.sideDishBaseUnit;
-    return data;
-  }
-}
-
-class SideDishOptionLikes {
-  String sideDishOptionLikeName;
-  int sideDishOptionLikeStatus;
-
-  SideDishOptionLikes(
-      {this.sideDishOptionLikeName, this.sideDishOptionLikeStatus});
-
-  SideDishOptionLikes.fromJson(Map<String, dynamic> json) {
-    sideDishOptionLikeName = json['side_dish_option_like_name'];
-    sideDishOptionLikeStatus = json['side_dish_option_like_status'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['side_dish_option_like_name'] = this.sideDishOptionLikeName;
-    data['side_dish_option_like_status'] = this.sideDishOptionLikeStatus;
-    return data;
-  }
-}
-
-class SideDishOptionHates {
-  String sideDishOptionHateName;
-  int sideDishOptionHateStatus;
-
-  SideDishOptionHates(
-      {this.sideDishOptionHateName, this.sideDishOptionHateStatus});
-
-  SideDishOptionHates.fromJson(Map<String, dynamic> json) {
-    sideDishOptionHateName = json['side_dish_option_hate_name'];
-    sideDishOptionHateStatus = json['side_dish_option_hate_status'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['side_dish_option_hate_name'] = this.sideDishOptionHateName;
-    data['side_dish_option_hate_status'] = this.sideDishOptionHateStatus;
-    return data;
-  }
-}
-
-class SideDishOptionTastes {
-  String sideDishOptionTasteName;
-  int sideDishOptionTasteStatus;
-
-  SideDishOptionTastes(
-      {this.sideDishOptionTasteName, this.sideDishOptionTasteStatus});
-
-  SideDishOptionTastes.fromJson(Map<String, dynamic> json) {
-    sideDishOptionTasteName = json['side_dish_option_taste_name'];
-    sideDishOptionTasteStatus = json['side_dish_option_taste_status'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['side_dish_option_taste_name'] = this.sideDishOptionTasteName;
-    data['side_dish_option_taste_status'] = this.sideDishOptionTasteStatus;
+    data['condition_name'] = this.conditionName;
+    data['condition_code'] = this.conditionCode;
+    data['condition_value'] = this.conditionValue;
     return data;
   }
 }

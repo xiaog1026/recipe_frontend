@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_frontend/constant/text_size_constant.dart';
+import 'package:recipe_frontend/constant/str_constant.dart';
 import 'package:recipe_frontend/constant/color_constant.dart';
 
 typedef OnClick = void Function();
@@ -24,7 +24,7 @@ class ItemCountTitle extends StatelessWidget {
             title,
             style: TextStyle(
                 fontSize: fontSize == null
-                    ? TextSizeConstant.BookAudioPartTabBar
+                    ? StrConstant.BookAudioPartTabBar
                     : fontSize,
                 fontWeight: FontWeight.bold,
                 color: ColorConstant.colorDefaultTitle),

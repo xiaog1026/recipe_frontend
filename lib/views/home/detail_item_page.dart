@@ -10,7 +10,7 @@ import 'package:recipe_frontend/router.dart' as r;
 import 'package:recipe_frontend/widgets/video_item_widget.dart';
 import 'package:recipe_frontend/widgets/image_item_widget.dart';
 import 'package:recipe_frontend/constant/color_constant.dart';
-import 'package:recipe_frontend/constant/text_size_constant.dart';
+import 'package:recipe_frontend/constant/str_constant.dart';
 import 'package:recipe_frontend/models/home_detail_item_model.dart';
 import 'package:recipe_frontend/network/mock_request.dart';
 import 'package:recipe_frontend/network/http_request.dart';
@@ -159,7 +159,7 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
                 child: Text(
                   title,
                   style: TextStyle(
-                      fontSize: TextSizeConstant.BookAudioPartTabBar,
+                      fontSize: StrConstant.BookAudioPartTabBar,
                       fontWeight: FontWeight.bold,
                       color: ColorConstant.colorDefaultTitle),
                 )),
