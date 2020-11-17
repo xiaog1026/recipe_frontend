@@ -6,6 +6,7 @@ import 'package:recipe_frontend/network/http_request.dart';
 import 'package:recipe_frontend/network/mock_request.dart';
 import 'package:recipe_frontend/models/my_table_model.dart';
 import 'package:recipe_frontend/router.dart' as r;
+import 'package:recipe_frontend/network/http_config.dart';
 
 class MyTable extends StatelessWidget {
   @override
@@ -30,7 +31,15 @@ class _MyTableBodyState extends State<MyTableBody> {
   @override
   void initState() {
     super.initState();
-    MockRequest.mockMyTable().then((res) {
+
+    // MockRequest.mockMyTable().then((res) {
+    //   setState(() {
+    //     this.myTableItem = MyTableItem.fromJson(res);
+    //   });
+    // });
+
+    HttpRequest.request(ApiConstant.BASE_URL + ApiConstant.TABLE_USERID +"=" + 23.toString()).then((res){
+      // 状态改变
       setState(() {
         this.myTableItem = MyTableItem.fromJson(res);
       });
@@ -157,48 +166,6 @@ class _MyTableBodyState extends State<MyTableBody> {
       return Container();
     }
     return buildSuggestions(_validIngredents);
-    //
-    // return Padding(
-    //   padding: EdgeInsets.all(1),
-    //   child: Column(
-    //     crossAxisAlignment: CrossAxisAlignment.start,
-    //     children: <Widget>[
-    //       SizedBox(height: 3),
-    //       Wrap(
-    //         spacing: 5.0, //两个widget之间横向的间隔
-    //         direction: Axis.horizontal, //方向
-    //         alignment: WrapAlignment.start, //内容排序方式
-    //         children: List<Widget>.generate(
-    //           _validIngredents.length,
-    //               (int index) {
-    //             return ActionChip(
-    //               //标签文字
-    //               label: Text(
-    //                 _validIngredents[index].conditionName + "  " +
-    //                     _validIngredents[index].conditionValue.toString(),
-    //                 style: TextStyle(
-    //                   fontSize: 16,
-    //                   color: Colors.white,
-    //                 ),
-    //               ),
-    //               //点击事件
-    //               onPressed: () async {
-    //
-    //               },
-    //               elevation: 3,
-    //               backgroundColor: Color.fromARGB(
-    //                 180,
-    //                 Random().nextInt(255),
-    //                 Random().nextInt(255),
-    //                 Random().nextInt(255),
-    //               ),
-    //             );
-    //           },
-    //         ).toList(),
-    //       ),
-    //     ],
-    //   ),
-    // );
   }
 
   //基础配菜列表

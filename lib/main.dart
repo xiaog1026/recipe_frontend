@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recipe_frontend/views/add/add.dart';
 import 'package:recipe_frontend/views/mytable/my_table.dart';
 import 'package:recipe_frontend/views/home/home.dart';
-import 'package:recipe_frontend/views/profile/profile.dart';
+import 'package:recipe_frontend/views/profile/mine.dart';
 import 'package:recipe_frontend/views/shopping/shopping.dart';
 import 'package:recipe_frontend/views/mytable/ingredent_navi.dart';
 
@@ -77,7 +77,7 @@ class MyStackPageState extends State<MyStackPage> {
           MyTable(),
           Add(),
           Shopping(),
-          Profile()
+          MineView()
         ],
       ),
     );

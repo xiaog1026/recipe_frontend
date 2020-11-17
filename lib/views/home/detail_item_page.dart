@@ -54,7 +54,7 @@ class _DetailItemHomePage extends State<DetailItemHomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    HttpRequest.request(Constant.BASE_URL + "/dish/dish_id=" + this._dashId.toString()).then((res){
+    HttpRequest.request(ApiConstant.BASE_URL + "/dish/dish_id=" + this._dashId.toString()).then((res){
       setState(() {
         this.homeDetailItem = HomeDetailItem.fromJson(res);
       });

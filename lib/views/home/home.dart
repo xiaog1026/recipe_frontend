@@ -83,7 +83,7 @@ class _HomeBodyState extends State<HomeBody> {
   }
 
   void dataRefreshByHttp(){
-    HttpRequest.request(Constant.BASE_URL + "/card/card_page="+1.toString() + "/n_cards=6/n_dishs=6").then((res){
+    HttpRequest.request(ApiConstant.BASE_URL + "/card/card_page="+1.toString() + "/n_cards=6/n_dishs=6").then((res){
       final subjects = res["cards"];
       //print(subjects);
       List<Cards> subItems = [];
@@ -100,7 +100,7 @@ class _HomeBodyState extends State<HomeBody> {
 
   void dataLoadByHttp(){
     pageIndex++;
-    HttpRequest.request(Constant.BASE_URL + "/card/card_page=" + pageIndex.toString() + "/n_cards=6/n_dishs=6").then((res){
+    HttpRequest.request(ApiConstant.BASE_URL + "/card/card_page=" + pageIndex.toString() + "/n_cards=6/n_dishs=6").then((res){
 
       final subjects = res["cards"];
       //print(subjects);
