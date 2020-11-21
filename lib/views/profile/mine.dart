@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 //import 'package:mall/utils/shared_preferences_util.dart';
 import 'package:recipe_frontend/widgets/icon_text_arrow.dart';
 import 'package:recipe_frontend/widgets/mall_icon.dart';
-//import 'package:mall/utils/navigator_util.dart';
+import 'package:recipe_frontend/utils/navigator_util.dart';
 import 'package:recipe_frontend/event/login_event.dart';
 import 'package:recipe_frontend/service/user_service.dart';
 import 'package:recipe_frontend/utils/toast_util.dart';
@@ -17,7 +17,7 @@ class MineView extends StatefulWidget {
 class _MineViewState extends State<MineView> {
   bool isLogin = false;
   var imageHeadUrl;
-  var nickName;
+  var id;
   UserService _userService = UserService();
 
   @override
@@ -32,7 +32,7 @@ class _MineViewState extends State<MineView> {
         setState(() {
           isLogin = true;
           imageHeadUrl = loginEvent.url;
-          nickName = loginEvent.nickName;
+          id = loginEvent.id;
         });
       } else {
         setState(() {
@@ -101,7 +101,7 @@ class _MineViewState extends State<MineView> {
                             left: ScreenUtil().setWidth(10.0)),
                       ),
                       Text(
-                        nickName,
+                        id,
                         style: TextStyle(
                             fontSize: ScreenUtil().setSp(26.0),
                             color: Colors.white),
@@ -293,6 +293,6 @@ class _MineViewState extends State<MineView> {
   }
 
   _toLogin() {
-    //NavigatorUtils.goLogin(context);
+    NavigatorUtils.goLogin(context);
   }
 }

@@ -4,8 +4,8 @@ EventBus loginEventBus = EventBus();
 
 class LoginEvent {
   bool isLogin;
-  String nickName;
+  String id;
   String url;
 
-  LoginEvent(this.isLogin, {this.nickName, this.url});
+  LoginEvent(this.isLogin, {this.id, this.url});
 }

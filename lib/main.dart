@@ -5,10 +5,18 @@ import 'package:recipe_frontend/views/home/home.dart';
 import 'package:recipe_frontend/views/profile/mine.dart';
 import 'package:recipe_frontend/views/shopping/shopping.dart';
 import 'package:recipe_frontend/views/mytable/ingredent_navi.dart';
+import 'package:recipe_frontend/network/routers.dart';
+import 'package:recipe_frontend/network/application.dart';
+import 'package:fluro/fluro.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget{
+  MyApp() {
+    final router = FluroRouter();
+    Routers.configureRoutes(router);
+    Application.router = router;
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

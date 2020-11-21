@@ -19,6 +19,7 @@ class StrConstant {
   static const String ADD_CART = "加入购物车";
   static const String BUY = "立即购买";
   static const String LOGIN = "登录";
+  static const String VISITOR_LOGIN = "游客登录";
   static const String REGISTER = "注册";
   static const String ACCOUNT_HINT = "请输入手机号码";
   static const String PASSWORD_HINT = "请输入密码";

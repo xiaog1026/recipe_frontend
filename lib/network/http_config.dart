@@ -8,6 +8,8 @@ class ApiConstant {
  static const String REGISTER=BASE_URL+'/auth/register';
  //登录
  static const String LOGIN=BASE_URL+'/auth/login';
+ //游客登录
+ static const String VISITOR_LOGIN=BASE_URL+'/user/register';
  //退出登录
  static const String LOGIN_OUT=BASE_URL+"/auth/logout";
 
