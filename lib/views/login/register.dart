@@ -5,6 +5,7 @@ import 'package:recipe_frontend/widgets/mall_icon.dart';
 import 'package:recipe_frontend/service/user_service.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:recipe_frontend/utils/navigator_util.dart';
+import 'package:recipe_frontend/constant/color_constant.dart';
 
 class RegisterView extends StatefulWidget {
   @override
@@ -22,7 +23,7 @@ class _RegisterViewState extends State<RegisterView> {
   Widget build(BuildContext context) {
     ScreenUtil.init(context,allowFontScaling: true);
     return Scaffold(
-      backgroundColor: Colors.deepOrangeAccent,
+      backgroundColor: ColorConstant.colorPrimary,
       body: SafeArea(
           child: Container(
         child: Center(
@@ -50,7 +51,7 @@ class _RegisterViewState extends State<RegisterView> {
                       decoration: InputDecoration(
                         icon: Icon(
                           Icons.account_circle,
-                          color: Colors.deepOrangeAccent,
+                          color: ColorConstant.colorPrimary,
                           size: ScreenUtil().setWidth(60.0),
                         ),
                         hintText: StrConstant.ACCOUNT_HINT,
@@ -75,7 +76,7 @@ class _RegisterViewState extends State<RegisterView> {
                       decoration: InputDecoration(
                         icon: Icon(
                           MallIcon.PASS_WORD,
-                          color: Colors.deepOrangeAccent,
+                          color: ColorConstant.colorPrimary,
                           size: ScreenUtil().setWidth(60.0),
                         ),
                         hintText: StrConstant.PASSWORD_HINT,
@@ -98,7 +99,7 @@ class _RegisterViewState extends State<RegisterView> {
                         width: ScreenUtil().setWidth(600.0),
                         child: RaisedButton(
                           onPressed: _register,
-                          color: Colors.deepOrangeAccent,
+                          color: ColorConstant.colorPrimary,
                           child: Text(
                             StrConstant.REGISTER,
                             style: TextStyle(
@@ -111,7 +112,6 @@ class _RegisterViewState extends State<RegisterView> {
               ),
             ),
           ),
-//
         ),
       )),
     );
@@ -137,7 +137,7 @@ class _RegisterViewState extends State<RegisterView> {
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: 1,
-        backgroundColor: Colors.deepOrangeAccent,
+        backgroundColor: ColorConstant.colorPrimary,
         textColor: Colors.white,
         fontSize: ScreenUtil().setSp(28.0));
   }

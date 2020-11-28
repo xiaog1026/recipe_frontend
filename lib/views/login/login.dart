@@ -192,7 +192,7 @@ class _LoginViewState extends State<LoginView> {
         _showToast(StrConstant.LOGIN_SUCESS);
 //        Provider.of<UserInfoModel>(context, listen: true)
 //            .updateInfo(userEntity);
-        loginEventBus.fire(LoginEvent(true,url: userEntity.userInfo.avatarUrl,id: userEntity.userInfo.id));
+        loginEventBus.fire(LoginEvent(true,id: userEntity.data.id));
         Navigator.pop(context);
       }, (onFail) {
         print(onFail);
@@ -215,10 +215,9 @@ class _LoginViewState extends State<LoginView> {
         userEntity = success;
         _saveUserInfo();
         _showToast(StrConstant.LOGIN_SUCESS);
-//        Provider.of<UserInfoModel>(context, listen: true)
-//            .updateInfo(userEntity);
-        loginEventBus.fire(LoginEvent(true,url: userEntity.userInfo.avatarUrl,id: userEntity.userInfo.id));
+        loginEventBus.fire(LoginEvent(true,id: userEntity.data.id));
         Navigator.pop(context);
+        //NavigatorUtils.popRegister(context);
       }, (onFail) {
         print(onFail);
         _showToast(onFail);
@@ -239,11 +238,9 @@ class _LoginViewState extends State<LoginView> {
 
   _saveUserInfo() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    SharedPreferencesUtils.token = userEntity.token;
-    await sharedPreferences.setString(StrConstant.TOKEN, userEntity.token);
+    // SharedPreferencesUtils.token = userEntity.token;
+    // await sharedPreferences.setString(StrConstant.TOKEN, userEntity.token);
     await sharedPreferences.setString(
-        StrConstant.HEAD_URL, userEntity.userInfo.avatarUrl);
-    await sharedPreferences.setString(
-        StrConstant.NICK_NAME, userEntity.userInfo.id);
+        StrConstant.NICK_NAME, userEntity.data.id);
   }
 }

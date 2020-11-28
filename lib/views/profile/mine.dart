@@ -91,9 +91,9 @@ class _MineViewState extends State<MineView> {
                         child: CircleAvatar(
                           radius: ScreenUtil().setWidth(50),
                           foregroundColor: Colors.green,
-                          backgroundImage: NetworkImage(
-                            imageHeadUrl,
-                          ),
+                          // backgroundImage: NetworkImage(
+                          //   imageHeadUrl,
+                          // ),
                         ),
                       ),
                       Padding(

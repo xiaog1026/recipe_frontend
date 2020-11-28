@@ -1,60 +1,33 @@
-import 'package:json_annotation/json_annotation.dart';
+class UserEntity {
+  Data data;
 
-UserEntity _$UserEntityFromJson(Map<String, dynamic> json) {
-  return UserEntity(
-      json['userInfo'] == null
-          ? null
-          : UserInfo.fromJson(json['userInfo'] as Map<String, dynamic>),
-      json['token'] as String);
+  UserEntity({this.data});
+
+  UserEntity.fromJson(Map<String, dynamic> json) {
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.data != null) {
+      data['data'] = this.data.toJson();
+    }
+    return data;
+  }
 }
 
-Map<String, dynamic> _$UserEntityToJson(UserEntity instance) =>
-    <String, dynamic>{'userInfo': instance.userInfo, 'token': instance.token};
-
-UserInfo _$UserInfoFromJson(Map<String, dynamic> json) {
-  return UserInfo(json['id'] as String, json['avatarUrl'] as String);
-}
-
-Map<String, dynamic> _$UserInfoToJson(UserInfo instance) => <String, dynamic>{
-  'id': instance.id,
-  'avatarUrl': instance.avatarUrl
-};
-
-
-@JsonSerializable()
-class UserEntity extends Object {
-
-  @JsonKey(name: 'userInfo')
-  UserInfo userInfo;
-
-  @JsonKey(name: 'token')
-  String token;
-
-  UserEntity(this.userInfo,this.token,);
-
-
-  factory UserEntity.fromJson(Map<String, dynamic> srcJson) => _$UserEntityFromJson(srcJson);
-
-  Map<String, dynamic> toJson() => _$UserEntityToJson(this);
-
-}
-
-
-@JsonSerializable()
-class UserInfo extends Object {
-
-  @JsonKey(name: 'id')
+class Data {
   String id;
 
-  @JsonKey(name: 'avatarUrl')
-  String avatarUrl;
+  Data({this.id});
 
-  UserInfo(this.id,this.avatarUrl,);
+  Data.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+  }
 
-  factory UserInfo.fromJson(Map<String, dynamic> srcJson) => _$UserInfoFromJson(srcJson);
-
-  Map<String, dynamic> toJson() => _$UserInfoToJson(this);
-
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    return data;
+  }
 }
-
-

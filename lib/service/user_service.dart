@@ -45,9 +45,9 @@ class UserService {
       OnFail onFail) async {
     try {
       var response =
-      await HttpUtil.instance.post(ApiConstant.VISITOR_LOGIN, parameters: parameters);
+      await HttpUtil.instance.get(ApiConstant.VISITOR_LOGIN, parameters: parameters);
       // if (response['errno'] == 0) {
-        UserEntity userEntity = UserEntity.fromJson(response['data']);
+        UserEntity userEntity = UserEntity.fromJson(response);
         onSuccess(userEntity);
       // } else {
       //   onFail(response['errmsg']);
