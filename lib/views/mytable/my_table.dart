@@ -58,53 +58,61 @@ class _MyTableBodyState extends State<MyTableBody> {
     if (_currentRecommendConditionSummary == null) {
       return Container();
     }
-
     return Container(
       padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-          border:
-          Border(bottom: BorderSide(width: 10, color: Color(0xffe2e2e2)))),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            // 每日菜单标题显示
-            getItemCountTitleWidget("每日菜单", r.Router.moreDishPage),
-            // 横向滚动组件
-            getSubScrollImage(_currentRecommendation),
-            SizedBox(height: 5),
-            // 我的可用食材标题显示
-            getItemCountTitleWidget("我的可用的主要食材", r.Router.ingredentNaviPage),
-            getIngredents(_currentRecommendConditionSummary),
-            SizedBox(height: 5),
-            // 基础配菜条件标题显示
-            getItemCountTitleWidget("基础配菜条件", r.Router.sideDishNaviPage),
-            getSideDishBases(_currentRecommendConditionSummary),
-            SizedBox(height: 5),
-            // 想吃
-            getItemCountTitleWidget("想吃",r.Router.sideDishNaviPage),
-            getFavoriteIngredients(_currentRecommendConditionSummary),
-            SizedBox(height: 5),
-            // 不想吃
-            getItemCountTitleWidget("不想吃",r.Router.sideDishNaviPage),
-            getUnlikeIngredients(_currentRecommendConditionSummary),
-            SizedBox(height: 5),
-            // 最喜欢
-            getItemCountTitleWidget("最喜欢",r.Router.sideDishNaviPage),
-            getFavoriteFlavor(_currentRecommendConditionSummary),
-            SizedBox(height: 5),
-            // 烹饪方法
-            getItemCountTitleWidget("烹饪方法",r.Router.sideDishNaviPage),
-            getCookingMethod(_currentRecommendConditionSummary),
-            SizedBox(height: 5),
-            // 烹饪方法
-            getItemCountTitleWidget("药膳",r.Router.sideDishNaviPage),
-            getMedicalHistory(_currentRecommendConditionSummary),
-            SizedBox(height: 5),
-          ],
+      decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 10, color: Color(0xffe2e2e2)))),
+      child:Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              // 每日菜单标题显示
+              getItemCountTitleWidget("每日菜单", r.Router.moreDishPage),
+              // 横向滚动组件
+              getSubScrollImage(_currentRecommendation),
+              SizedBox(height: 5),
+              // 我的可用食材标题显示
+              getItemCountTitleWidget("我的可用的主要食材", r.Router.ingredentNaviPage),
+              getIngredents(_currentRecommendConditionSummary),
+              SizedBox(height: 5),
+              // 基础配菜条件标题显示
+              getItemCountTitleWidget("基础配菜条件", r.Router.sideDishNaviPage),
+              getSideDishBases(_currentRecommendConditionSummary),
+              SizedBox(height: 5),
+              // 想吃
+              getItemCountTitleWidget("想吃",r.Router.sideDishNaviPage),
+              getFavoriteIngredients(_currentRecommendConditionSummary),
+              SizedBox(height: 5),
+              // 不想吃
+              getItemCountTitleWidget("不想吃",r.Router.sideDishNaviPage),
+              getUnlikeIngredients(_currentRecommendConditionSummary),
+              SizedBox(height: 5),
+              // 最喜欢
+              getItemCountTitleWidget("最喜欢",r.Router.sideDishNaviPage),
+              getFavoriteFlavor(_currentRecommendConditionSummary),
+              SizedBox(height: 5),
+              // 烹饪方法
+              getItemCountTitleWidget("烹饪方法",r.Router.sideDishNaviPage),
+              getCookingMethod(_currentRecommendConditionSummary),
+              SizedBox(height: 5),
+              // 烹饪方法
+              getItemCountTitleWidget("药膳",r.Router.sideDishNaviPage),
+              getMedicalHistory(_currentRecommendConditionSummary),
+              SizedBox(height: 5),
+            ],
+          ),
         ),
-      )
-      ,
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            // Add your onPressed code here!
+          },
+          label: Text('重新推荐'),
+          icon: Icon(Icons.autorenew_outlined),
+          backgroundColor: Colors.green,
+        ),
+        // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+
+      ),
     );
   }
 
