@@ -62,36 +62,53 @@ class _NaviPageBodyState extends State<NaviPageBody> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
-    return new Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        new Expanded(
-            flex: 2,
-            child: Container(
-              color: ColorConstant.color_fff,
-              child: new ListView.builder(
-                  itemCount: _datas.length,
-                  itemBuilder: (BuildContext context, int position) {
-                    return getRow(position);
-                  }),
-            )),
-        new Expanded(
-            flex: 5,
-            child: ListView(
-              children: <Widget>[
-                Container(
-                  //height: double.infinity,
-                  alignment: Alignment.topLeft,
-                  padding: const EdgeInsets.all(10),
-                  color: ColorConstant.color_F9F9F9,
-                  child: getChip(index), //传入一级分类下标
-                ),
-              ],
-            )),
-      ],
+
+    return Scaffold(
+      body: WillPopScope(
+          onWillPop: () async => showDialog(
+              context: context,
+              builder: (context) =>
+                  AlertDialog(title: Text('确定保存设置?'), actions: <Widget>[
+                    RaisedButton(
+                        child: Text('保存返回'),
+                        onPressed: () => Navigator.of(context).pop(true)),
+                    RaisedButton(
+                        child: Text('放弃'),
+                        onPressed: () => Navigator.of(context).pop(true)),
+                    RaisedButton(
+                        child: Text('再想想'),
+                        onPressed: () => Navigator.of(context).pop(false)),
+                  ])),
+          child: new Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            new Expanded(
+                flex: 2,
+                child: Container(
+                color: ColorConstant.color_fff,
+                child: new ListView.builder(
+                    itemCount: _datas.length,
+                    itemBuilder: (BuildContext context, int position) {
+                      return getRow(position);
+                    }),
+                )
+            ),
+            new Expanded(
+                flex: 5,
+                child: ListView(
+                  children: <Widget>[
+                    Container(
+                      alignment: Alignment.topLeft,
+                      padding: const EdgeInsets.all(10),
+                      color: ColorConstant.color_F9F9F9,
+                      child: getChip(index), //传入一级分类下标
+                    ),
+                  ],
+                )
+            ),
+          ],))
     );
   }
 
